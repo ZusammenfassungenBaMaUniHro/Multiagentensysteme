@@ -69,4 +69,57 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Verifikation, Ausführungsspezifikation, Planung
 	\end{itemize}
 	\subsection{Logik-basierende Architektur}
+	\begin{itemize}
+		\item Grundidee: Beschreibung einer Regelmenge für die Beschreibung der besten Aktion für einen gegeben Zustand
+		\item Bestandteile:
+		\begin{itemize}
+			\item $p$: eine Theorie (eine Menge von Regeln)
+			\item $\Delta$: Datenbank mit den aktuellen Zustand der Welt
+			\item $A$: eine Menge von Aktionen welcher ein Agent ausführen kann
+			\item $\Delta\vdash_{p}\phi$: d.h. $\phi$ kann aus der $\Delta$ und $p$ abgeleitet werden, mit $\phi=$Do(a) können wir aus den aktuellen Zustand der Welt auf die bestmögliche Aktion logisch schließen
+		\end{itemize}
+		 \item Grundlegender Algorithmus (unabhänging von verwendeter Logik)
+		 \begin{enumerate}
+		 	\item see(s,p), generiert Beobachtung aus der neuen Welt
+		 	\item next($\Delta$,p), update der Datenbank
+		 	\item action($\Delta$), ermittelt die auszuführende Aktion aus der Datenbank, entweder ist die Aktion direkt beschrieben oder kann aus den Regeln abgeleitet werden kann
+		 \end{enumerate}
+	\end{itemize}
+	\subsection{Modal Logik}
+	\begin{itemize}
+		\item Erlaubt Ausdrücke wie: wahrscheinlich wahr, geglaubt wahr, wahr in der Zukunft usw.
+		\item Syntax:
+		\begin{itemize}
+			\item Prädikatenlogik mit Erweiterung
+			\item Prop: eine menge von atomaren Formeln
+			\item $\diamond$ p: möglicherweise p, manchmal p 
+			\item $\square$p: immer p, notwendigerweise p
+		\end{itemize}
+		\item Semantik:
+		\begin{itemize}
+			\item Kripke-Struktur: $<W,R,\mu>$
+			\begin{description}
+				\item[$W$] eine Menge von Welten
+				\item[$R$] eine Menge von binär Relationen, beschreiben den Übergang zwischen den Welten
+				\item[$\mu$] Abbildungsfunktion welche jeder Welt Eigenschaften zuordnet ($\mu : W \rightarrow 2^{Prop}$)
+			\end{description}
+			\item Definition von $\diamond$ und $\square$ Operator auf Basis von Erreichbarkeit der Welten in einer Kripke-Struktur
+			\item $\square p$: p ist wahr in allen Welten, welche von der aktuellen Welt erreichbar sind
+			\item $\diamond p$: p ist wahr, wenn mindestens eine Welt erreichbar in welcher p wahr ist
+			\item für R muss zusätzlich gelten:
+			\begin{description}
+				\item[reflexiv] für jedes $x \in W$ gilt $R(x,x)$
+				\item[transitiv] für jedes $x,y,z \in W$ gilt $R(x,y) \wedge R(y,z) \implies R(x,z)$
+				\item[seriell] für jedes $x \in W$ existiert ein $y$ so dass gilt $R(x,y)$
+				\item[euklidisch] wenn für jedes $x,y,z \in W$ mit $R(x,y)$ und $R(x,z)$ gilt auch $R(y,z)$
+			\end{description}
+			\item Axiome:
+			\begin{description}
+				\item[$\square p \Rightarrow p$] Wenn immer $p$ gilt folgt daraus das aktuell p gilt
+				\item[$\square p \Rightarrow \diamond p$] Wenn $p$ immer wahr ist, ist p auch in mindestens einer Welt wahr
+				\item[$\square p \Rightarrow \square \square p$] Wenn $p$ ist immer wahr, ist p auch immer wahr wenn wir einen Übergang machen
+				\item[$\diamond p \Rightarrow \square \diamond p$] Wenn $p$ in mindestens einer Welt wahr ist, ist p für immer Wahr wenn wir diese Welt erreicht haben
+			\end{description}
+		\end{itemize}
+	\end{itemize}
 \end{document}
