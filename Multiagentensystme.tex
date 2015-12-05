@@ -1,4 +1,4 @@
- \documentclass{article} %A4
+\documentclass{article} %A4
 \usepackage[a4paper,left=1.9cm, right=2.1cm,top = 1.2cm,bottom=2.3cm]{geometry}
 \usepackage[utf8]{inputenc}%Umlaute
 \usepackage[ngerman]{babel} %Texttrennung
@@ -18,7 +18,6 @@
 \title{Zusammenfassung - Multi-Agenten-Systeme}
 \author{
 	Andreas Ruscheinski,
-	Marc Meier
 }
 
 
@@ -137,6 +136,73 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Ziel 1: Intelligentes Verhalten ohne explizite Repräsentation des Wissens
 		\item Ziel 2: Intelligenten Verhalten ohne abstraktes schließen über die Repräsentation des Wissens
 		\item Idee 1: Echte Intelligenz gibt es nur ein einer Welt und nicht losgelöst von dieser wie in Theorem Beweisern und Expertensysteme
-		\item Idee 2: Intelligentes Verhalten entsteht erst als Ergebnis der Interaktion mit der Umgeb
+		\item Idee 2: Intelligentes Verhalten entsteht erst als Ergebnis der Interaktion mit der Umgebung
+	\end{itemize}
+	\subsection{Subsumtion Architektur}
+	\begin{itemize}
+		\item Traditionell: Die Intelligenz steht zwischen Beobachtung und Aktion d.h. aus Beobachtungen wird geschlossen welche Aktion ausgeführt wird
+		\item Neu: Die Intelligenz ensteht beim Beobachter durch die Aktionen in der Welt d.h. ein Agent ist nicht an sich intelligent sondern wirkt intelligent für einen Beobachter
+		\item Entscheidungsfindung durch verschiedene Aufgaben:
+		\begin{itemize}
+			\item Verhalten ist eine Abbildung von Zustand auf Aktion
+			\item Verarbeitung der Sensorwerte mit Schluss auf den Zustand
+			\item Zustände und Aktionen sind direkt gekoppelt
+		\end{itemize}
+		\item Mechanismus für die Auswahl der Aktionen: Prioritäten
+		\item Formales Modell:
+		\begin{itemize}
+			\item Ein Verhalten (Behavior) $b \in Beh$ ist ein Tupel $(c,a)$ mit $c \subseteq P, a \in A$ wobei P ist eine Menge von Beobachtungen und A eine Menge von Aktionen
+			\item Ein Verhalten wird ausgeführt wenn die Umgebung ist in dem Zustand $s\in S$ und wenn $see(s) \in c$
+			\item Subsumption Hierachie wird realisiert durch eine Hemmungs-Relation $b_{1} \prec b_{2}$ ($b_{1}$ hemmt $b_{2}$ d.h. $b_{1}$ hat eine höhere Priorität)
+		\end{itemize}
+		\item Aktionsauswahl-Algorithmus:
+		\begin{enumerate}
+			\item Berechne die Menge von aktivierbaren Aktionen $FB = \{(c,a)|(c,a)\in Beh \wedge see(s)\in c\}$
+			\item für jede Aktion in FB überprüfe ob es eine Aktion in FB gibt welche eine höhere Priorität hat
+			\item wenn Aktion gefunden gib $a$ zurück
+		\end{enumerate}
+		\item Vorteile:
+		\begin{itemize}
+			\item Einfach und hohe Ausdrucksfähigkeit
+			\item Die Berechnung ist einfach nach zu vollziehen
+			\item Robust gegen Ausfälle
+			\item Das gesamte Verhalten entsteht durch Interaktion mit der Umwelt
+		\end{itemize}
+		\item Nachteile:
+		\begin{itemize}
+			\item Verhalten wird hard codiert unter der Annahme die Umgebung genau zu kennen
+			\item Schwierige Entscheidung über das Standard Verhalten
+			\item langwierige Entscheidungen schwer möglich
+			\item skaliert nicht in größeren Systemen
+		\end{itemize}
+	\end{itemize}
+	\subsection{Planning Agents}
+	\begin{itemize}
+		\item Erster Ansatz für den Planning Agent:
+		\begin{enumerate}
+			\item beobachte die Umgebung
+			\item aktualisiere das interne Modell der Umgebung
+			\item ermittle welche Intention als nächstes erreicht werden soll
+			\item benutze means-end Resoning für die Erstellung des Plans welche die Intention erreicht
+			\item führe Plan aus
+		\end{enumerate}
+		\item means-end Resoning: Gib den Agent eine Repräsentation der Ziele/Intentionen welche erreicht werden sollen, Aktionen welche er ausführen kann, der Umgebung $\rightarrow$ Agent nutzt Repräsentationen um einen Plan zu generieren
+		\item Umsetzung durch z.B STRIPS Planner
+		\begin{itemize}
+			\item Repräsentation der Umgebung durch Ontologie (Begriffe + Relationen)
+			\item Beschreibung der aktuellen Welt durch Verwendung der Ontologie Begriffe (closed world assumption: alles was nicht angegeben wird ist falsch)
+			\item Jede Aktion hat Name, Pre-Condition List (alle Bedingungen müssne wahr sein bevor Aktion ausgeführt werden kann), Delete-List (Bedingungen welche nach der Ausführung nicht mehr wahr sind), Add-List (Bedingungen welche nach der Ausführung der Aktion gelten) (können alle Variablen erhalten für allgemeine Aussagen)
+		\end{itemize}
+		\item Ein Plan ist eine Liste von Aktionen, mit Variablen ersetzt durch Konstanten. Die Ausführung der Aktionen führt von den aktuellen Zustand in ein einen Zustand welche das Ziel erfüllt. Der Plan ist vollständig (keine weiteren Aktionen notwendig) und konsistent (alle Pre-Conditions sind erfüllt) und die Schritte können hintereinander ausgeführt werden ohne dass die Ausführung eines Schrittes beeinflusst wird.
+		\item Formal: partielly ordered Plans
+		\begin{itemize}
+			\item Plan Schritt mit Partieller Ordnung $\prec$: $S_{i} \prec S_{j}$ bedeutet dass $S_{i}$ vor $S_{j}$ ausgeführt werden muss
+			\item Eine Menge von Variablen Zuordnungen $x=t$ mit x ist eine Variable und t ist eine Konstante
+			\item Eine Menge von Kausalen Relationen: $S_{i} \rightarrow S_{j}$ bedeutet die Ausführung $S_{i}$ macht die Vorbedingungen von $S_{j}$ wahr
+		\end{itemize}
+		\item Formal: Eigenschaften Konsistenz und Vollständigkeit
+		\begin{itemize}
+			\item Vollständigkeit: Die Vorbedingung eine Schrittes ist erfüllt: $\forall S_{j}$ mit $c\in Precond(S_{j})$ und $\exists S_{i}$ mit $S_{i} \prec S_{j}$ und $c\in Effect(S_{j})$ für jede Sequenz von Plänen gilt: $\forall S_{k}$ mit $S_{i} \prec S_{k} \prec S_{j}, \not c \notin Effect S_{k}$
+		\end{itemize}
 	\end{itemize}
 \end{document}
