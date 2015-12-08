@@ -13,6 +13,7 @@
 \usepackage{framed}
 \usepackage{algpseudocode}
 \usepackage{tikz}
+\usepackage{sgame}
 
 \usepackage[labelformat=empty]{caption}
 \title{Zusammenfassung - Multi-Agenten-Systeme}
@@ -176,6 +177,40 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item skaliert nicht in größeren Systemen
 		\end{itemize}
 	\end{itemize}
+	\subsection{Planning}
+	\begin{itemize}
+		\item Umsetzung durch z.B STRIPS Planner
+		\begin{itemize}
+			\item Repräsentation der Umgebung durch Ontologie (Begriffe + Relationen)
+			\item Beschreibung der aktuellen Welt durch Verwendung der Ontologie Begriffe (closed world assumption: alles was nicht angegeben wird ist falsch)
+			\item Jede Aktion hat Name, Pre-Condition List (alle Bedingungen müssen wahr sein bevor Aktion ausgeführt werden kann), Delete-List (Bedingungen welche nach der Ausführung nicht mehr wahr sind), Add-List (Bedingungen welche nach der Ausführung der Aktion gelten) (können alle Variablen erhalten für allgemeine Aussagen)
+		\end{itemize}
+		\item Ein Plan ist eine Liste von Aktionen, mit Variablen ersetzt durch Konstanten. Die Ausführung der Aktionen führt von den aktuellen Zustand in ein einen Zustand welche das Ziel erfüllt. Der Plan ist vollständig (keine weiteren Aktionen notwendig) und konsistent (alle Pre-Conditions sind erfüllt) und die Schritte können hintereinander ausgeführt werden ohne dass die Ausführung eines Schrittes beeinflusst wird.
+		\item Formal: partielly ordered Plans
+		\begin{itemize}
+			\item Plan Schritt mit Partieller Ordnung $\prec$: $S_{i} \prec S_{j}$ bedeutet dass $S_{i}$ vor $S_{j}$ ausgeführt werden muss
+			\item Eine Menge von Variablen Zuordnungen $x=t$ mit x ist eine Variable und t ist eine Konstante
+			\item Eine Menge von Kausalen Relationen: $S_{i} \rightarrow S_{j}$ bedeutet die Ausführung $S_{i}$ macht die Vorbedingungen von $S_{j}$ wahr
+		\end{itemize}
+		\item Formal: Eigenschaften Konsistenz und Vollständigkeit
+		\begin{itemize}
+			\item Vollständigkeit: 
+			\begin{itemize}
+				\item es gilt: $\forall S_{j}$ mit $c\in Precond(S_{j})$ und $\exists S_{i}$ mit $S_{i} \prec S_{j}$ und $c\in Effect(S_{i})$ (die Vorbedingungen für $S_{j}$ sind Teil des Effektes von $S_{i}$)
+				\item für eine Sequenz gilt:$\forall S_{k}$ mit $S_{i} \prec S_{k} \prec S_{j}, \neg c \notin Effect S_{k}$
+			\end{itemize} 
+			\item Konsistenz: Wenn $S_{i} \prec S_{j}$ denn $S_{j} \prec S_{i}$ und wenn $x=A$ denn $x \neq B$ für verschiedene A und B für die Variable x.
+		\end{itemize}
+		\item Vorlesungfolien für Beispiel!!!
+		\item iterative Erstellung eines Plans durch rückwärts anwenden der Regeln d.h. in jedem Schritt wird eine offene Bedingung durch die entsprechende Aktion erfüllt
+		\item dadurch können Konflikte entstehen
+		\begin{itemize}
+			\item Ein Konflikt gdw. wenn $S_{3}$ bedroht die kausale Ordnung zwischen $S_{1}$ und $S_{2}$
+			\item Lösung 1: Demotion - $S_{3}$ vor $S_{1}$ und $S_{2}$ ausführen
+			\item Lösung 2: Promotion - $S_{3}$ nach $S_{1}$ und $S_{2}$ ausführen
+			\item sollte dies wieder zu Konflikte führen Backtrack und eine andere Lösung ausprobieren in dem $S_{3}$ neben $S_{1}$ zu $S_{2}$ eingeordnet wird
+		\end{itemize}
+	\end{itemize}
 	\subsection{Planning Agents}
 	\begin{itemize}
 		\item Erster Ansatz für den Planning Agent:
@@ -187,22 +222,100 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item führe Plan aus
 		\end{enumerate}
 		\item means-end Resoning: Gib den Agent eine Repräsentation der Ziele/Intentionen welche erreicht werden sollen, Aktionen welche er ausführen kann, der Umgebung $\rightarrow$ Agent nutzt Repräsentationen um einen Plan zu generieren
-		\item Umsetzung durch z.B STRIPS Planner
+		\item Problem: Planung und Ermittelung welches Ziel als nächstes erreicht werden soll kosten Zeit
+		\item dadurch kann die Situation entstehen dass der Agent ein Ziel erreichen will welches nach dessen Ermittelung nicht mehr optimal ist
+		\item wenn Planung und  Ermittelung schnell genug sind und die Welt sich nicht verändert hat
+		\item Agenten Algorithmus formal 1:
+		\begin{enumerate}
+			\item B = $B_{0}$ - Ausgangs-Beliefs
+			\item führe unendlich lange aus:
+			\item beobachte Umwelt - p
+			\item B = brf(B,p) - Aktualisierung des der eigenen Beliefs
+			\item I = deliberate(B) - Ermittelung
+			\item $\pi$ = plan(B,I) - Plane
+			\item execute($\pi$) - führe Plan aus
+		\end{enumerate}
+		\item Ermittelung durch: option-generation (Erstelle mögliche Ziele) und filter (Auswahl des Ziels)
+		\item Agenten Algorithmus formal 2 - BDI Agent:
+		\begin{enumerate}
+			\item B = $B_{0}$ - Ausgangs-Beliefs
+			\item führe unendlich lange aus:
+			\item beobachte Umwelt - p
+			\item B = brf(B,p) - Aktualisierung des der eigenen Beliefs
+			\item D = options(B,i) - Desires (Ziele)
+			\item I = filter(B,D,I) - Ermittelung der Intentionen durch Beliefs(Wissen über Umwelt), Desires(Ziele) und Intentions(gewählten Ziel)
+			\item $\pi$ = plan(B,I) - Plane
+			\item execute($\pi$) - führe Plan aus
+		\end{enumerate}
+		\item Begriffserklärungen:
 		\begin{itemize}
-			\item Repräsentation der Umgebung durch Ontologie (Begriffe + Relationen)
-			\item Beschreibung der aktuellen Welt durch Verwendung der Ontologie Begriffe (closed world assumption: alles was nicht angegeben wird ist falsch)
-			\item Jede Aktion hat Name, Pre-Condition List (alle Bedingungen müssne wahr sein bevor Aktion ausgeführt werden kann), Delete-List (Bedingungen welche nach der Ausführung nicht mehr wahr sind), Add-List (Bedingungen welche nach der Ausführung der Aktion gelten) (können alle Variablen erhalten für allgemeine Aussagen)
+			\item Beliefs - Weltwisssen
+			\item Desires - Ziele
+			\item  Intentions - Absicht (Ziel welches ich jetzt erreichen möchte)
 		\end{itemize}
-		\item Ein Plan ist eine Liste von Aktionen, mit Variablen ersetzt durch Konstanten. Die Ausführung der Aktionen führt von den aktuellen Zustand in ein einen Zustand welche das Ziel erfüllt. Der Plan ist vollständig (keine weiteren Aktionen notwendig) und konsistent (alle Pre-Conditions sind erfüllt) und die Schritte können hintereinander ausgeführt werden ohne dass die Ausführung eines Schrittes beeinflusst wird.
-		\item Formal: partielly ordered Plans
+	\end{itemize}
+	\subsection{Commitments}
+	\begin{itemize}
+		\item Strategien:
 		\begin{itemize}
-			\item Plan Schritt mit Partieller Ordnung $\prec$: $S_{i} \prec S_{j}$ bedeutet dass $S_{i}$ vor $S_{j}$ ausgeführt werden muss
-			\item Eine Menge von Variablen Zuordnungen $x=t$ mit x ist eine Variable und t ist eine Konstante
-			\item Eine Menge von Kausalen Relationen: $S_{i} \rightarrow S_{j}$ bedeutet die Ausführung $S_{i}$ macht die Vorbedingungen von $S_{j}$ wahr
+			\item Blind Commitment - Agent will Intention erreichen bis er glaubt die Intention erreicht zu haben
+			\item Single-minded Commitment - Agent will Intention erreichen bis er glaubt diese erreicht zu haben oder es nicht mehr möglich ist
+			\item Open-minded Commitment - Agent will Intention solange er glaubt dieser erreichen zu können
 		\end{itemize}
-		\item Formal: Eigenschaften Konsistenz und Vollständigkeit
+		\item Anpassungen des Agenten Algorithmus
+		\begin{enumerate}
+			\item wie bisher $\rightarrow$ Blind Commitment
+			\item wie bisher - Ermittle Plan und solange dieser nicht leer ist führe diesen Schrittweise aus, nach jedem Schritt hole neuen Percept + Belief Update: wenn Ziel nicht mehr erreicht werden kann ermittle neuen Plan $\rightarrow$ Single-minded da keine neuen Intentionen erwogen werden
+			\item wie bisher - Ermittle Plan und solange dieser nicht leer ist führe diesen Schrittweise aus solange Intention nicht erreicht und dieser noch nicht unmöglich ist, nach jedem Schritt hole neuen Percept + Belief Update + Desires ermitteln + Intentions ermitteln :wenn Ziel nicht mehr erreicht werden kann ermittle neuen Plan
+		\end{enumerate}
+		\item Problem: Agent will Intentions verfolgen selbst wenn schon klar ist das Ziel nicht mehr erreicht werden kann und Agent will konstant berücksichtigten dass evtl unnötige Zeit verschwendet wurde und deshalb nie dass Ziel erreichen
+		\item Lösung: Meta-Level Control welches entscheidet wann der Agent seine Intention verwirft
+	\end{itemize}
+\section{Kooperation von Agenten}
+	\subsection{Einführung}
+	\begin{itemize}
+		\item Ein Multiagenten System besteht aus meheren Agenten welche
 		\begin{itemize}
-			\item Vollständigkeit: Die Vorbedingung eine Schrittes ist erfüllt: $\forall S_{j}$ mit $c\in Precond(S_{j})$ und $\exists S_{i}$ mit $S_{i} \prec S_{j}$ und $c\in Effect(S_{j})$ für jede Sequenz von Plänen gilt: $\forall S_{k}$ mit $S_{i} \prec S_{k} \prec S_{j}, \not c \notin Effect S_{k}$
+			\item Interagieren durch Kommunikation
+			\item Mit der Umgebung interagieren können
+			\item Haben unterschiedliche Einflussbereiche auf die Umgebung
+			\item stehen in Beziehungen zu einander (Organisation)
+		\end{itemize}
+		\item Egoistische Agenten bergen Potential für Konflikte da jeder seine Ziele verfolgen möchte
+		\item Lösung: Kooperation mittels Entscheidungstheorie
+	\end{itemize}
+	\subsection{Entscheidungstheorie - Spieltheorie}
+	\begin{itemize}
+		\item Wir haben zwei Agenten $A_{i}$ und $A_{j}$
+		\item jeder Agent hat die gleiche Menge $\Omega = \{\omega_{1},\omega_{2},\dots\}$ eine Menge von Ergebnissen welche für den Agenten von Bedeutung ist
+		\item die Bedeutung für einen Agent wird durch eine Utilty-Funktion repräsentiert $u_{i,j}: \Omega \rightarrow \mathbb{R}$ (jeder Agent hat eine Utility-Funktion)
+		\item Utility-Funktion bildet Ordnung der Ergebnisse: $\omega \geq_{i} \omega^{'}$ bedeutet also $u_{i}(\omega) \geq u_{i}(\omega^{'})$
+		\item Utility beschreibt den Nutzen nicht GELD!
+		\item Modell für mehrere Agenten:
+		\begin{itemize}
+			\item Agenten führen Aktion gleichzeitig aus, als Ergebnis etwas aus $\Omega$
+			\item das aktuelle Ergebnis hängt von Kombinationen von Aktionen ab
+			\item Jeder Agent hat nur zwei mögliche Aktionen: C und D
+			\item $\tau: A_{c} \times A_{c} \rightarrow \Omega $ eine Funktion welche die Aktion von den beiden Agenten auf ein Ergebnis abbildet
+			\item Eine Welt lässt sich mittels $\tau$ beschreiben unter Verwendung aller möglichen Kombinationen von Aktionen $\rightarrow$ hat ein Ergebnis
+			\item jeder Agent kann die Utility von dem Ergebnis berechnen
+		\end{itemize}
+		\item Darstellung mittels Payoff Matrix (Ein Agent ist Spalte (linker Rechter), ein Agent ist Zeile (linker Eintrag)
+		\newline
+		\begin{game}{2}{2}
+			   & D & C \\
+			 D & 1,1 & 1,4\\
+			 C & 4,1 & 4,4
+		\end{game}
+		\item Beispiel: $\tau(D,C) = \omega_{1}$ mit $u_{i}(\omega_{1}) = 1$ und $u_{j}(\omega_{1})=4$
+	\end{itemize}
+	\subsection{Strategien}
+	\begin{itemize}
+		\item Dominate-Stragie
+		\begin{itemize}
+			\item Aus einer gegebenen Strategie s (Beispiel: D oder C) für Agent $i$ ergeben sich verschiedene Ergebnisse ($\omega$)
+			\item Strategie $s_{1}$ dominiert  Strategie $s_{2}$ wenn jedes Ergebnis wenn $s_{1}$ gespielt wird bevorzugt wird gegenüber $s_{2}$
+			\item Rationale Agenten werden niemals dominate Strategien spielen (???)
 		\end{itemize}
 	\end{itemize}
 \end{document}
