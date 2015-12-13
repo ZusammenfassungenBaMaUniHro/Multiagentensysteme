@@ -311,11 +311,38 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{Strategien}
 	\begin{itemize}
-		\item Dominate-Stragie
+		\item Dominate-Strategie
 		\begin{itemize}
 			\item Aus einer gegebenen Strategie s (Beispiel: D oder C) für Agent $i$ ergeben sich verschiedene Ergebnisse ($\omega$)
 			\item Strategie $s_{1}$ dominiert  Strategie $s_{2}$ wenn jedes Ergebnis wenn $s_{1}$ gespielt wird bevorzugt wird gegenüber $s_{2}$
-			\item Rationale Agenten werden niemals dominate Strategien spielen (???)
+			\item Rationale Agenten werden niemals dominierte Strategien spielen d.h. es gibt eine Strategie welche besser ist
+			\item Ziel: dominierte Strategie elimieren
+			\item Anmerkung: es ist nicht immer möglich eine nur eine nicht dominierte Strategie zu finden
+		\end{itemize}
+		\item Nash-Equilibrium (Nash-Gleichgewicht):
+		\begin{itemize}
+			\item Strategie $s_i$ und $s_j$ sind ein einem Nash-Gleichgewicht gdw: Unter der Annahme dass Agent i spielt $s_i$ und Agent j kann nicht besser sein als wenn er $s_j$ spielt UND unter der Annahme dass Agent j spielt $s_j$ und Agent i kann nicht besser sein als wenn er $s_i$ spielt
+			\item Aber: nicht jede Interaktion hat ein Nash-Gleichgewicht und einige Interaktionen haben mehrere Nash-Gleichgewichte
+		\end{itemize}
+		\item Pareto Optimum:
+		\begin{itemize}
+			\item Gegeben einer initialen Zuordnung von Gütern für eine Menge von Agenten
+			\item Eine Änderung welche für einen Agent besser ist aber für keinen anderen Agenten schlechter nennt sich Pareto-Verbesserung
+			\item Eine Zuweisung ist Pareto-Optimal gdw. keine weiteren Pareto-Verbesserungen gemacht werden können
+		\end{itemize}
+		\item Kompetative und Null-Summen-Interaktionen
+		\begin{itemize}
+			\item Szenarios in denen Agenten gegenläufige Preferänzen haben sind streng kompetativ
+			\item Null-Summen Spiele gdw. die Summe aller Utilitys der Agenten = 0 sind: $u_i(\omega) + u_j(\omega) = 0, \forall \omega \in \Omega$
+			\item Null-Summen Spiele sind streng kompetativ, im Real-Life selten
+		\end{itemize}
+		\item Beispiel: Prison Dilemma
+		\begin{itemize}
+			\item zwei Männer wurden verhaftet wegen Diebstahl
+			\item wenn jmd gesteht und der andere nicht geht der Geständige 3 Jahre ins Gefägniss und der andere kommt frei
+			\item wenn beide gestehen beide gehen für 3 Jahre ins Gefängnis
+			\item Wenn keiner gesteht geht jeder 1 Jahr ins Gefängnis\\
+			\item TODO: ???
 		\end{itemize}
 	\end{itemize}
 \end{document}
