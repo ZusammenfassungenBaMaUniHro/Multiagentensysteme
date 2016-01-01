@@ -14,14 +14,12 @@
 \usepackage{algpseudocode}
 \usepackage{tikz}
 \usepackage{sgame}
-
 \usepackage[labelformat=empty]{caption}
+
 \title{Zusammenfassung - Multi-Agenten-Systeme}
 \author{
 	Andreas Ruscheinski,
 }
-
-
 \begin{document}
 \maketitle
 \begin{framed}Korrektheit und Vollständigkeit der Informationen sind nicht gewährleistet.
@@ -35,8 +33,8 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\begin{itemize}
 		\item Ein Agent ist ein Computer System welches \textbf{selbstständig} Aktionen im Interesse des Benutzers ausführen kann.
 		\item Ein Agent \textbf{befindet} sich in einer \textbf{dynamischen Umgebung} befindet mit welcher er interagiert.
-		\item Ein Multi-Agenten-System besteht aus \textbf{meheren Agenten}, welcher \textbf{miteinander agieren}.
-		\item In einem Multi-Agenten-System ist es notwending für \textbf{erfolgreiche Interaktion} dass Agenten miteinander \textbf{kooperieren},\textbf{ sich abstimmen} und miteinander \textbf{verhandeln} können.
+		\item Ein Multi-Agenten-System besteht aus \textbf{mehreren Agenten}, welchee \textbf{miteinander agieren}.
+		\item In einem Multi-Agenten-System ist es notwendig für \textbf{erfolgreiche Interaktion} dass Agenten miteinander \textbf{kooperieren},\textbf{ sich abstimmen} und miteinander \textbf{verhandeln} können.
 	\end{itemize}
 	\subsection{Eigenschaften}
 	\begin{itemize}
@@ -65,8 +63,10 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Gründe für Logik}
 	\begin{itemize}
 		\item Wissensbasis + Aktionen mit Voraussetzung und Auswirkung $\rightarrow$ Plan für Lösung des Problems
+		\item Verwaltung von Annahmen
 		\item Logik ist ein Framework für das Verstehen von Systemen
 		\item Verifikation, Ausführungsspezifikation, Planung
+		\item Agenten als Theorembeweiser
 	\end{itemize}
 	\subsection{Logik-basierende Architektur}
 	\begin{itemize}
@@ -76,22 +76,31 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item $p$: eine Theorie (eine Menge von Regeln)
 			\item $\Delta$: Datenbank mit den aktuellen Zustand der Welt
 			\item $A$: eine Menge von Aktionen welcher ein Agent ausführen kann
-			\item $\Delta\vdash_{p}\phi$: d.h. $\phi$ kann aus der $\Delta$ und $p$ abgeleitet werden, mit $\phi=$Do(a) können wir aus den aktuellen Zustand der Welt auf die bestmögliche Aktion logisch schließen
+			\item $\Delta\vdash_{p}\phi$: d.h. $\phi$ kann aus der $\Delta$ unter der Verwendung von $p$ abgeleitet werden, mit $\phi=$Do(a) können wir aus den aktuellen Zustand der Welt auf die bestmögliche Aktion logisch schließen
 		\end{itemize}
-		 \item Grundlegender Algorithmus (unabhänging von verwendeter Logik)
-		 \begin{enumerate}
+		 \item Algorithmus-Bestandteile (unabhängig von verwendeter Logik)
+		 \begin{itemize}
 		 	\item see(s,p), generiert Beobachtung aus der neuen Welt
 		 	\item next($\Delta$,p), update der Datenbank
 		 	\item action($\Delta$), ermittelt die auszuführende Aktion aus der Datenbank, entweder ist die Aktion direkt beschrieben oder kann aus den Regeln abgeleitet werden kann
+		 \end{itemize}
+		 \item Algorithmus - Ermittelung einer Aktion aus einer Wissensdatenbank:
+		 \begin{enumerate}
+		 	\item Überprüfe für jede Aktion a ob  $\Delta\vdash_{p}Do(a)$ gilt (d.h. a kann direkt abgeleitet werden)
+		 	\item Falls ja: gebe a zurück sonst
+		 	\item Überprüfe für jede Aktion a ob $\Delta\not{\vdash}_{p}\neg Do(a)$ gilt (d.h a ist nicht explizit ausgeschlossen)
+		 	\item Falls ja: gebe a zurück sonst gebe NULL zurück
 		 \end{enumerate}
 	\end{itemize}
 	\subsection{Modal Logik}
 	\begin{itemize}
 		\item Erlaubt Ausdrücke wie: wahrscheinlich wahr, geglaubt wahr, wahr in der Zukunft usw.
+		\item kann genutzt werden um Informationen für die Agenten abzuleiten und über das Wissen von Agenten zu schließen
 		\item Syntax:
 		\begin{itemize}
 			\item Prädikatenlogik mit Erweiterung
-			\item Prop: eine menge von atomaren Formeln
+			\item Prop: eine Menge von atomaren Formeln
+			\item wenn $p,q \in Prob$ dann sind auch $\neg p, p \& q, \diamond p,\square p$ Formeln
 			\item $\diamond$ p: möglicherweise p, manchmal p 
 			\item $\square$p: immer p, notwendigerweise p
 		\end{itemize}
@@ -105,7 +114,9 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\end{description}
 			\item Definition von $\diamond$ und $\square$ Operator auf Basis von Erreichbarkeit der Welten in einer Kripke-Struktur
 			\item $\square p$: p ist wahr in allen Welten, welche von der aktuellen Welt erreichbar sind
+			\item $<M,w>\vDash\square p$ wenn für alle $w' \in W$ gilt: wenn $(w,w') \in R$ denn $<M,w'>\vDash p$
 			\item $\diamond p$: p ist wahr, wenn mindestens eine Welt erreichbar in welcher p wahr ist
+			\item $<M,w>\vDash\diamond p$ wenn es ein $w' \in W$ existiert mit:  wenn $(w,w') \in R$ denn $<M,w'>\vDash p$
 			\item für R muss zusätzlich gelten:
 			\begin{description}
 				\item[reflexiv] für jedes $x \in W$ gilt $R(x,x)$
