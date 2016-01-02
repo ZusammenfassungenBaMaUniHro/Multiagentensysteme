@@ -119,17 +119,17 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item $<M,w>\vDash\diamond p$ wenn es ein $w' \in W$ existiert mit:  wenn $(w,w') \in R$ denn $<M,w'>\vDash p$
 			\item für R muss zusätzlich gelten:
 			\begin{description}
-				\item[reflexiv] für jedes $x \in W$ gilt $R(x,x)$
-				\item[transitiv] für jedes $x,y,z \in W$ gilt $R(x,y) \wedge R(y,z) \implies R(x,z)$
-				\item[seriell] für jedes $x \in W$ existiert ein $y$ so dass gilt $R(x,y)$
-				\item[euklidisch] wenn für jedes $x,y,z \in W$ mit $R(x,y)$ und $R(x,z)$ gilt auch $R(y,z)$
+				\item[reflexiv] für jedes $x \in W$ gilt $R(x,x)$ d.h. x ist von x aus erreichbar
+				\item[transitiv] für jedes $x,y,z \in W$ gilt $R(x,y) \wedge R(y,z) \implies R(x,z)$ d.h. wenn man von x nach y und von y nach z gehen kann, kann man auch von x nach z gehen
+				\item[seriell] für jedes $x \in W$ existiert ein $y$ so dass gilt $R(x,y)$ d.h. ???
+				\item[euklidisch] wenn für jedes $x,y,z \in W$ mit $R(x,y)$ und $R(x,z)$ gilt auch $R(y,z)$ d.h. wenn man von x nach y und von x nach z gehen kann dann kann man auch von y nach z gehen 
 			\end{description}
 			\item Axiome:
 			\begin{description}
-				\item[$\square p \Rightarrow p$] Wenn immer $p$ gilt folgt daraus das aktuell p gilt
-				\item[$\square p \Rightarrow \diamond p$] Wenn $p$ immer wahr ist, ist p auch in mindestens einer Welt wahr
-				\item[$\square p \Rightarrow \square \square p$] Wenn $p$ ist immer wahr, ist p auch immer wahr wenn wir einen Übergang machen
-				\item[$\diamond p \Rightarrow \square \diamond p$] Wenn $p$ in mindestens einer Welt wahr ist, ist p für immer Wahr wenn wir diese Welt erreicht haben
+				\item[$\square p \Rightarrow p$] Wenn immer $p$ gilt folgt daraus das aktuell p gilt (Reflexiv)
+				\item[$\square p \Rightarrow \diamond p$] Wenn $p$ immer wahr ist, ist p auch in mindestens einer Welt wahr (Seriell)
+				\item[$\square p \Rightarrow \square \square p$] Wenn $p$ ist immer wahr, ist p auch immer wahr wenn wir einen Übergang machen (transitiv)
+				\item[$\diamond p \Rightarrow \square \diamond p$] Wenn $p$ in mindestens einer Welt wahr ist, ist p für immer Wahr wenn wir diese Welt erreicht haben (Euklidisch)
 			\end{description}
 			\item Anwendung der modal Logik auf Agenten durch Einführung von Indizes, welche entsprechend für Agent gelten
 			\item Axiome und Agenten:
