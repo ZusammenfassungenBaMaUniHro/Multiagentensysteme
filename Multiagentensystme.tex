@@ -170,14 +170,18 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\end{itemize}
 		\item Regeln:
 		\begin{itemize}
-			\item (Des $\alpha$) $\rightarrow$ (Bel $\alpha$) (Belief goal compatibility)
-			\item (Int $\alpha$) $\rightarrow$ (Des $\alpha$) (Goal-intention compatibility)
-			\item (Int does(a)) $\rightarrow$ does(a) (Volitional commitment)
-			\item (Des $\alpha$) $\rightarrow$ (Bel (Des $\alpha$)) und (Int $\alpha$) $\rightarrow$ (Bel (Int $\alpha$)) (Awareness of goals \& intentions)
-			\item done(a) $\rightarrow$ (Bel (done(a))) (No unconscious actions)
-			\item (Int $\alpha$) $\rightarrow$ AF($\neg$(Int $\alpha$)) (No infinite deferral)
+			\item (Des $\alpha$) $\rightarrow$ (Bel $\alpha$) (Belief goal compatibility): Wenn der Agent $\alpha$ erreichen will folgt daraus das der Agent $\alpha$ glaubt
+			\item (Int $\alpha$) $\rightarrow$ (Des $\alpha$) (Goal-intention compatibility): Wenn der Agent $\alpha$ verfolgt daraus das der Agent $\alpha$ erreichen will
+			\item (Int does(a)) $\rightarrow$ does(a) (Volitional commitment): Wenn der Agent does(a) ausführen möchte, wird er diese als nächstes ausführen
+			\item (Des $\alpha$) $\rightarrow$ (Bel (Des $\alpha$)) und (Int $\alpha$) $\rightarrow$ (Bel (Int $\alpha$)) (Awareness of goals \& intentions): Bedingt dass neue Ziele und Intentionen als Event gepostet werden müssen in der Wissensbasis
+			\item done(a) $\rightarrow$ (Bel (done(a))) (No unconscious actions): Wenn ein Agent eine Aktion ausgeführt hat weiss er das er diese ausgeführt hat
+			\item (Int $\alpha$) $\rightarrow$ AF($\neg$(Int $\alpha$)) (No infinite deferral): Ein Agent will eventuell eine Intention verfolgen oder diese Verwerfen
 		\end{itemize}
-		\item TODO: ????
+		\item reactive und proactive Agenten
+		\begin{itemize}
+			\item reactiv: Aktion wird ausgeführt durch eine Eingabe: wenn Eingabe = p denn tue a
+			\item proactiv: Planung und Ausführung von Aktionen um ein Ziel zu erreichen: tue a um p zu erreichen
+		\end{itemize}
 	\end{itemize}
 	
 \section{Planning}
@@ -332,7 +336,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 \section{Kooperation von Agenten}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Ein Multiagenten System besteht aus meheren Agenten welche
+		\item Ein Multiagenten System besteht aus mehren Agenten welche
 		\begin{itemize}
 			\item Interagieren durch Kommunikation
 			\item Mit der Umgebung interagieren können
