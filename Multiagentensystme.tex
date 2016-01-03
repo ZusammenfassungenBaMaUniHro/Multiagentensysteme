@@ -350,12 +350,12 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\begin{itemize}
 		\item Wir haben zwei Agenten $A_{i}$ und $A_{j}$
 		\item jeder Agent hat die gleiche Menge $\Omega = \{\omega_{1},\omega_{2},\dots\}$ eine Menge von Ergebnissen welche für den Agenten von Bedeutung ist
-		\item die Bedeutung für einen Agent wird durch eine Utilty-Funktion repräsentiert $u_{i,j}: \Omega \rightarrow \mathbb{R}$ (jeder Agent hat eine Utility-Funktion)
+		\item die Bedeutung für einen Agent i wird durch eine Utilty-Funktion repräsentiert $u_i: \Omega \rightarrow \mathbb{R}$ (jeder Agent hat eine Utility-Funktion)
 		\item Utility-Funktion bildet Ordnung der Ergebnisse: $\omega \geq_{i} \omega^{'}$ bedeutet also $u_{i}(\omega) \geq u_{i}(\omega^{'})$
 		\item Utility beschreibt den Nutzen nicht GELD!
 		\item Modell für mehrere Agenten:
 		\begin{itemize}
-			\item Agenten führen Aktion gleichzeitig aus, als Ergebnis etwas aus $\Omega$
+			\item Agenten wählen Aktion gleichzeitig aus, als Ergebnis etwas aus $\Omega$
 			\item das aktuelle Ergebnis hängt von Kombinationen von Aktionen ab
 			\item Jeder Agent hat nur zwei mögliche Aktionen: C und D
 			\item $\tau: A_{c} \times A_{c} \rightarrow \Omega $ eine Funktion welche die Aktion von den beiden Agenten auf ein Ergebnis abbildet
@@ -376,10 +376,10 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Dominate-Strategie
 		\begin{itemize}
 			\item Aus einer gegebenen Strategie s (Beispiel: D oder C) für Agent $i$ ergeben sich verschiedene Ergebnisse ($\omega$)
-			\item Strategie $s_{1}$ dominiert  Strategie $s_{2}$ wenn jedes Ergebnis wenn $s_{1}$ gespielt wird bevorzugt wird gegenüber $s_{2}$
+			\item Strategie $s_{1}$ dominiert Strategie $s_{2}$ wenn jedes Ergebnis wenn $s_{1}$ gespielt wird bevorzugt wird gegenüber $s_{2}$
 			\item Rationale Agenten werden niemals dominierte Strategien spielen d.h. es gibt eine Strategie welche besser ist
-			\item Ziel: dominierte Strategie elimieren
-			\item Anmerkung: es ist nicht immer möglich eine nur eine nicht dominierte Strategie zu finden
+			\item Ziel: dominierte Strategie eliminieren
+			\item Anmerkung: es ist nicht immer möglich nur eine nicht dominierte Strategie zu finden
 		\end{itemize}
 		\item Nash-Equilibrium (Nash-Gleichgewicht):
 		\begin{itemize}
@@ -392,19 +392,58 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Eine Änderung welche für einen Agent besser ist aber für keinen anderen Agenten schlechter nennt sich Pareto-Verbesserung
 			\item Eine Zuweisung ist Pareto-Optimal gdw. keine weiteren Pareto-Verbesserungen gemacht werden können
 		\end{itemize}
-		\item Kompetative und Null-Summen-Interaktionen
+		\item Kompetitive- und Null-Summen-Interaktionen
 		\begin{itemize}
-			\item Szenarios in denen Agenten gegenläufige Preferänzen haben sind streng kompetativ
+			\item Szenarios in denen Agenten gegenläufige Präferenzen haben sind streng kompetitiv
 			\item Null-Summen Spiele gdw. die Summe aller Utilitys der Agenten = 0 sind: $u_i(\omega) + u_j(\omega) = 0, \forall \omega \in \Omega$
-			\item Null-Summen Spiele sind streng kompetativ, im Real-Life selten
+			\item Null-Summen Spiele sind streng kompetitiv, im Real-Life selten
 		\end{itemize}
 		\item Beispiel: Prison Dilemma
 		\begin{itemize}
 			\item zwei Männer wurden verhaftet wegen Diebstahl
-			\item wenn jmd gesteht und der andere nicht geht der Geständige 3 Jahre ins Gefägniss und der andere kommt frei
+			\item wenn jmd gesteht und der andere nicht geht der Geständige 3 Jahre ins Gefängnis und der andere kommt frei
 			\item wenn beide gestehen beide gehen für 3 Jahre ins Gefängnis
-			\item Wenn keiner gesteht geht jeder 1 Jahr ins Gefängnis\\
-			\item TODO: ???
+			\item Wenn keiner gesteht geht jeder 1 Jahr ins Gefängnis
+			\item Nash-Equilibirum gdw. jeder gesteht
+			\item Besser wäre aber wenn jeder schweigt
 		\end{itemize}
+		\item Grundlegendes Problem von Multi-Agenten Interaktionen: es wird keine Kooperation entstehen wenn jeder Agent egoistisch ist
+		\item Lösung: Annahme mein Gegenspieler ist meine Zwilling, oder Shadow of the Future (nochmaliges treffen in der Zukunft)
+		\item Iterated Prison Dilemma
+		\begin{itemize}
+			\item Lösung: Spiele das Spiel mehrmals
+			\item Rückwärts Indutkion: Annahme wir spielen n mal, in Runde n-1 wollen wir schweigen für höheren Payoff, dadurch wird n-2 zur letzten richtigen Runde wo wir auch schweigen würden für höheren Payoff $\dots$ Prison-Dilemma mit fixer Anzahl an Runden ist schweigen immer die beste Strategie
+			\item Untersuchung in Axelrods Tournament: Iterated Prison Dilemma gegen verschiedene Gegner
+			\item Verschiedene Stragiegien: ALLD (always defect), TIT-FOR-TAT (Kooperation in der ersten Runde, danach immer die Aktion welche der Gegner gespielt hat), TESTER, JOSS
+		\end{itemize}
+	\end{itemize}
+	\subsection{Benevolent Agents}
+	\begin{itemize}
+		\item Wenn wir das ganze System kontrollieren können wir Agenten bauen welche sich gegenseitig unterstützen
+		\item Es gibt Konventionen über das Verhalten
+		\item Unter dieser Annahme: Unsere Agenten sind mehr oder weniger gutmütig d.h. unser bestes Ziel ist deren bestes Ziel
+		\item gutmütige Agenten vereinfachen das System-Design
+		\item gutmütige Agenten haben eigene Interesse kollidieren aber nicht mit anderen Interessen
+	\end{itemize}
+\section{Agenten Kommunikation}
+	\subsection{Einführung}
+	\begin{itemize}
+		\item Kommunikation ist der Austausch zwischen Informationen
+		\item für Kooperation ist es notwendig zu kommunizieren: Speech Acts, KQML \& KIF, FIPA ACL
+	\end{itemize}
+	\subsection{Speech Acts}
+	\begin{itemize}
+		\item Behandlung der Kommunikation bei multi Agenten ist häufig angelegt an die Speech-Act-Theory
+		\item Alles was wir äußern wird geäußert um ein Ziel oder eine Intention zu erfüllen
+		\item Speech Act Theorie: Wie Äußerungen genutzt werden um eine Ziel zu erreichen
+		\item Verschiedene Typen von Speech Acts (Searle):
+		\begin{itemize}
+			\item representives: informieren zb. Es regnet
+			\item directives: versucht den Höher zu etwas zu bewegen zb. Bitte mach mir Tee
+			\item commisives: Sprecher verspricht etwas zu tun zb. Ich verspreche ...
+			\item expressives: Sprecher teilt seinen mentalen Zustand mit z.b Danke
+			\item declarations: wie Krieg der Erklären oder Taufe
+		\end{itemize}
+		\item jeder Speech-Act hat zwei Komponenten: performative Verb (anfordern, informieren, ...) $+$ propositional content (die Tür ist verschlossen)
 	\end{itemize}
 \end{document}
