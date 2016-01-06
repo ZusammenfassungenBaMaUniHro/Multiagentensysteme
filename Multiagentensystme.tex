@@ -508,9 +508,126 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Basisstrukltur ist ähnlich zu KQML: Permative + Housekeeping + Content
 		\item INFORM und REQUEST sind die zwei Standard Permative in FIPA; der Rest wird auf Basis dieser definiert
 		\item Bedeutung von INFORM und REQUEST hat zwei Parts: pre-condition (muss wahr sein damiot der Speech Act erfolgreich ist), rational effect (Ziel welches der Sender der Nachricht erreichen möchte)
+		\item Beschreibung der pre-condtions usw als logischer Ausdruck
 	\end{itemize}
-	\section{???}
-	\section{???}
+	\subsection{Ontologien}
+	\begin{itemize}
+		\item Situation: Service Oriented Computing
+		\item Alle Teilnehmer haben ein gemeinsames, gleiches Verständniss von Begriffen über eine Domäne (Ontologie) d.h. jeder Teilnehmer weiß genau was unter einem bestimmten Begriff zu verstehen ist
+		\item Eine Ontologie beschreibt Begriffe und deren Relationen zu einander
+		\item Ontologien unterstützen die Interaktion dadruch dass sie Begriffe eine Bedeutung geben
+		\item Ontologien-Sprachen erlauben den User eine explizite und formale Konzeptionierung der Domäne
+		\item Problem: je umfangreicher die Sprache desto schwieriger wird es daraus zu schließen
+		\item Schließen in einer Ontology
+		\begin{itemize}
+			\item Klassenzugehörigkeit: Wenn x in der Klasse C und C eine Unterklasse von D, ist x auch in der Klasse D
+			\item Klassenequivalenz: Wenn Klasse A ist equivalent zu B und B zu C denn ist A equivalent zu C
+			\item Konsistenz: Wir haben X Instanzen von A und B aber  A und B sind disjunkt d.h. Fehler in der Ontologie
+			\item Klassifikation: gegeben Eigenschaft-Werte-Paare für Klasse A, wenn x die Kriterien erfüllt ist x in A
+		\end{itemize}
+		\item Schließen ist wichtig für: Überprüfung der Ontologie und des Wissens; Überprüfung ob ungewollte Beziehungen der Klassen entstanden sind; automatische Zuordnung von Instanzen zu Klassen
+		\item Überprüfungen sind wertvoll für: den Entwurf von großen Ontologien mit meheren Autoren; Integration und Verteilung anderer Ontologien an/von verschieden Quellen
+	\end{itemize}
+	\section{Wie sollten Agenten kommunizieren? Strategien und Protokolle}
+	\subsection{Einführung}
+	\begin{itemize}
+		\item Kommunikation ist wichtig für die Verteilung von Aufgaben(Aufteilung von Teilaufgaben) und Ergebnissen (Teilergebnisse)
+		\item Protokolle regeln die Interaktion zwischen Agenten
+	\end{itemize}
+	\subsection{Contract Net}
+	\begin{itemize}
+		\item Realisierung von Multi-Cast Kommunikation in Agenten-basierten Systemen
+		\item zwei Rollen: Selector und Contractor
+		\item Contract Net: Aufgabenverteilungs-Protokol für Aufgabenzuweisung
+		\item Schritte:
+		\begin{enumerate}
+			\item Recognition: Feststellung des Problems
+			\item Announcement: Mitteilung des Problems an alle Teilnehmer
+			\item Bidding: Teilnehmer beantworten mit den erwarteten Kosten
+			\item Awarding: Auftragsgeber belohnt den ausgewählten Teilnehmer
+			\item Expediting: ???
+		\end{enumerate}
+		\item Recognition
+		\begin{itemize}
+			\item Agent nimmt Problem wahr
+			\item Agent hat Ziel und: merkt dass er das Ziel nicht alleine erreichen kann (Nicht genügend Kapazität); merkt dass er dieses Ziel nicht alleine erreichen möchte (Deadline, Lösungsqualität)
+		\end{itemize}
+		\item Announcement
+		\begin{itemize}
+			\item Agent sendet Aufgabe incl. Spezifikation der Aufgabe an alle Teilnehmer
+			\item Spezifikation beinhaltet: Aufgabenbeschreibung, Anforderungen (Deadlines, Qualität der Lösung), Meta-Informationen
+			\item Announcement ist ein Broadcast
+		\end{itemize}
+		\item Bidding
+		\begin{itemize}
+			\item Agenten empfangen Announcement und entscheiden sich ob sie für die Aufgabe bieten möchten
+			\item Faktoren: Agent muss entscheiden ob er in der Lage ist die Aufgabe zu bewältigen; Agent muss die Contraints ermitteln ggf. Preis
+			\item wenn sie mitbieten wollen, senden Gebot (tender) an Aufgabensteller
+		\end{itemize}
+		\item Awarding \& Expediting
+		\begin{itemize}
+			\item Aufgabensteller muss aus den Geboten auswählen und entscheiden wer belohnt werden soll
+			\item Ergebniss wird den teilnehmenden Agenten mitgeteilt
+			\item Erfolgreicher Contractor (Teilnehmer) führt die Aufgabe aus
+			\item ggf. Erweiterung der Contractor Beziehung um weitere unter Beziehungen: sub-contracting
+		\end{itemize}
+		\item Problem: Spezifikation von ...
+		\begin{itemize}
+			\item Aufgaben: gemeinsame Sprache der Agenten
+			\item Lösungsqualität: Anforderungen (Ontologien), Werbungen und Reputation
+			\item Auswahl von konkurierenden Angeboten: Prefärenzen
+		\end{itemize}
+	\end{itemize}
+	\section{Verhandlungen}
+	\subsection{Einführung}
+	\begin{itemize}
+		\item Wie können Agenten eine Übereinkunft treffen wenn sie sich egoistisch verhalten?
+		\item Worst-Case: Null-Summen-Spiele d.h. keine Übereinkunft möglich ABER meistens die Möglichkeit ein kurzeitige Übereinkunft zu treffen zum allgmeinen Intersse
+		\item Fähigkeiten der Verhandlung notwendig
+		\item Verhandlungen werden durch einen Mechanismus (Protokoll) gesteuert
+		\item Mechanismus = Regeln für das Treffen von Agenten
+		\item Mechanismus-Design: Entwicklung von Mechanismen mit bestimmten Eigenschaften
+		\item Mechanismus-Design Eigenschaften:
+		\begin{itemize}
+			\item Konvergenz und garantierter Erfolg
+			\item Maximierung des Gemeinwohles
+			\item Parto-Effizienz
+			\item Individuelle Rationalität
+			\item Stabilität
+			\item Einfachheit
+			\item Verteilung
+		\end{itemize} 
+	\end{itemize}
+	\subsection{Verhandlung - Auktionen}
+	\begin{itemize}
+		\item Auktionen finden statt zwischen einen Auktionators und eine Menge von Bietern 
+		\item Ziel: Auktionator möchte eine Zuweisung von Gütern (Ressourcen) an einen Bieter erreichen
+		\item Meistens möchte Auktionator den maximalen Preis erreichen, die Bieter den minimalen
+		\item Auktions-Parameter
+		\begin{itemize}
+			\item Güter haben: Privaten Wert, Allgemeinen Wert, Korrelierten Wert
+			\item Gewinnerermittelung durch: erstes Gebot, zweites Gebot
+			\item Gebote sind: für alle sichtbar (open cry); verborgen (sealed bid)
+			\item Gebotsabgabe: einmalig (one shot), aufsteigend, absteigend
+		\end{itemize}
+	\end{itemize}
+	\subsection{Englische Auktion}
+	\begin{itemize}
+		\item höchstes Gebot gewinnt, für alle sichtbar, aufsteigend
+		\item Dominante Strategie: minimale Erhöhung des höchsten Gebotes bis Obergrenze erreicht, falls diese überschritten: Rückzug
+		\item Anfällig: Fluch des Gewinners (Bezahlt meistens zuviel), Lockvögel (Agent arbeitet mit Auktionator zusammen und treibt den Preis künstlich in die Höhe)
+	\end{itemize}
+	\subsection{Holländische Auktion}
+	\begin{itemize}
+		\item offene Gebote, absteigend
+		\item Auktionator startet mit hohen Startgebot
+		\item Auktionator senkt Preis bis Agent ein Gebot zu dem Preis abgiebt
+		\item Gewinner: Agent mit der Preisabgabe
+	\end{itemize}
+	\subsection{First-Price Sealed-Bid Auction}
+	\begin{itemize}
+		\item einmaliges Gebot, verborgen,
+	\end{itemize}
 	\section{???}
 	\section{???}	
 	\section{Blackboard}
