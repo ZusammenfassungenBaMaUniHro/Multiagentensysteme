@@ -475,4 +475,40 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Situated Langage Model: Bedeutung der Nachricht beruht nun auf er Nachricht und der Situation
 		\end{itemize}
 	\end{itemize}
+	\section{???}
+	\section{???}
+	\section{???}
+	\section{???}	
+	\section{Blackboard}
+	\subsection{Allgemein}
+	\begin{itemize}
+		\item indirekte Kommunikation d.h. keine direkte Kommunikation zwischen den Agenten sondern über ein Medium
+		\item Kommunikation durch schreiben der Information auf Blackboard (zentraler Datenspeicher)
+		\item Agenten können partielle Lösungen für das Problem dort veröffentlichen
+		\item Zentrale Datenstruktur ist Flaschenhals ggf. muss irg welche Hierarchien verfügen
+		\item subscripe-notify pattern: Agent bekündet Interesse über  bestimme Ereignisse, wenn Ereignis eintritt wird Agent benachrichtigt (proaktiv)
+		\item Annahmen: verschiedene Agenten greifen asynchron auf die Datenstruktur zu; ????
+		\item Wissensquelle: Agent drückt ein Teil der Lösung aus; ???
+		\item (??? IRG WAS MIT PRECONDITIONS ???)
+		\item Verschiedene Hierarchien für Tests (??? PRECONDITIONS ???)
+		\item Modularität: Man kann einzelne WQ des System entwickeln ohne zu wissen welche anderen WQ es gibt (also indirekte Kommunikation)
+		\item Interessant: Wie verändert sich die Systemleistung durch Austausch einzelner WQ?
+		\item Kommunikation:
+		\begin{enumerate}
+			\item Sammlung von Daten über Events für zukünftige Anwendung
+			\item Detektion von Event welche vorige Annahme widersprechen (???)
+		\end{enumerate}
+		\item Lokale Kontexte: Jeder hat eigene lokalen Abbild der Datenbank der von Interesse ist, Übertragung neuer Events an entsprechende Interessierte
+		\item (??? Folie über sprungen zu Integrität ???)
+		\item jeder Agent hat eigene Datenbank, Verteilung der Information über Blackboard; lokale Datenbanken bilden zusammen globale Datenbanken
+	\end{itemize}
+	\subsection{Alternative Architekturen}
+	\begin{itemize}
+		\item Beispiel: Speech Understanding,
+		\item Ansatz 1: Pipe-and-Filter Architektur; Problem: keine klare Trennung, ggf Wissen aus unterschiedlichen Quellen notwendig d.h. Architektur wird unnötige komplex
+		\item Ansatz 2: Object-Orientierte-Architektur; Problem: nicht flexibel da jede WQ wissen muss was eine andere WQ produzieren kann; Lösung: Client-Broker Ansatz aber recht komplex
+		\item Ansatz 3: Sichten-System; Problem: 
+		\item Besser: Alle Prozesse kommunizieren über Blackboard, Ziel: Wissensverteilung der Partiellen Lösungen
+	\end{itemize}
+
 \end{document}
