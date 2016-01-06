@@ -474,6 +474,40 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Encoded Message Model: Sprecher kodiert Nachricht in Wörter, Hörer versucht Nachricht zu dekodieren; Die Bedeutung der Sprecher Nachricht, die Übertragene Nachricht und die Interpretion sind gleich (falls keine Probleme der Kommunikation auftreten)
 			\item Situated Langage Model: Bedeutung der Nachricht beruht nun auf er Nachricht und der Situation
 		\end{itemize}
+		\item Typen von kommunizierenden Agenten
+		\begin{itemize}
+			\item Kommunikation unter Verwendung von Tell und Ask: Agenten teilen sich eine gemeinsame interne Repräsentation einer Sprache; Kommunikation ohne Verwendung einer externen Sprache
+			\begin{center}
+				\includegraphics[scale=0.3]{img/tell and ask.png}
+			\end{center}
+			\item Kommunikation unter Verwendung von Formalen Sprachen: Agenten machen sich keine Annahmen über die interne Repräsentation der Sprache; Agenten teilen eine gemeinsame Sprache für die Kommunikation
+			\begin{center}
+				\includegraphics[scale=0.3]{img/formal language.png}
+			\end{center}
+		\end{itemize}
+		\item Größtes Problem: Kommunikation ist zweideutig; Lösung durch Berücksichtigung des Contexts und der vorigen Kommunikationen
+		\item Definition der Semantik auf Basis von Planung: bestimmte Prädikate welche in der jeweiligen precondition-delete-add Listen verwaltet werden
+		\item Beispiel: request(s,h,$\phi$)
+		\begin{itemize}
+			\item pre: s glaubt h kann $\phi$ tun; s glaubt h glaubt h kann $\phi$; s glaubt s will $\phi$
+			\item post: h glaubt s glaubt s will $\phi$
+		\end{itemize}
+	\end{itemize}
+	\subsection{KQML und KIF}
+	\begin{itemize}
+		\item nun Betrachtung von Agent Communication Languages (ACLs) d.h. standard Formate für den Austausch von Nachrichten
+		\item bekannteste ACL: KQML
+		\item zwei Bestandteile: Wissens-Abfrage und -Manipulations Sprache (KQML) und Wissens-Austausch Format (KIF)
+		\item KQML ist eine äußere Sprache welche verschiedene akzeptierbare Verben (performatives) definiert (Bsp: ask-if, perform, tell, reply)
+		\item KIF ist eine Sprache für die Repräsentation des Nachrichteninhaltes (meistens sowas wie Common Lisp)
+		\item für die Kommunikation müssen die Agenten das gleiche Verständnis von Ausdrücken haben (Was bedeutet Schalter1?), formale Definition in einer Ontology
+	\end{itemize}
+	\subsection{FIPA}
+	\begin{itemize}
+		\item neue Entwicklung der Agenten Standards inc. ACL
+		\item Basisstrukltur ist ähnlich zu KQML: Permative + Housekeeping + Content
+		\item INFORM und REQUEST sind die zwei Standard Permative in FIPA; der Rest wird auf Basis dieser definiert
+		\item Bedeutung von INFORM und REQUEST hat zwei Parts: pre-condition (muss wahr sein damiot der Speech Act erfolgreich ist), rational effect (Ziel welches der Sender der Nachricht erreichen möchte)
 	\end{itemize}
 	\section{???}
 	\section{???}
