@@ -611,22 +611,34 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Gebotsabgabe: einmalig (one shot), aufsteigend, absteigend
 		\end{itemize}
 	\end{itemize}
-	\subsection{Englische Auktion}
+	\subsubsection{Englische Auktion}
 	\begin{itemize}
 		\item höchstes Gebot gewinnt, für alle sichtbar, aufsteigend
 		\item Dominante Strategie: minimale Erhöhung des höchsten Gebotes bis Obergrenze erreicht, falls diese überschritten: Rückzug
 		\item Anfällig: Fluch des Gewinners (Bezahlt meistens zuviel), Lockvögel (Agent arbeitet mit Auktionator zusammen und treibt den Preis künstlich in die Höhe)
 	\end{itemize}
-	\subsection{Holländische Auktion}
+	\subsubsection{Holländische Auktion}
 	\begin{itemize}
 		\item offene Gebote, absteigend
 		\item Auktionator startet mit hohen Startgebot
 		\item Auktionator senkt Preis bis Agent ein Gebot zu dem Preis abgiebt
 		\item Gewinner: Agent mit der Preisabgabe
 	\end{itemize}
-	\subsection{First-Price Sealed-Bid Auction}
+	\subsubsection{First-Price Sealed-Bid Auction}
 	\begin{itemize}
-		\item einmaliges Gebot, verborgen,
+		\item einmaliges Gebot, verborgen
+		\item eine Runde
+		\item Bieter sendet Gebot
+		\item Bieter mit höchstem Gebot gewinnt
+		\item Gewinner bezahlt Preis des höchstem Gebotes
+		\item Beste Strategie: biete weniger als der eigentlich wert
+	\end{itemize}
+	\subsubsection{Vickrey Auction}
+	\begin{itemize}
+		\item second preis, sealed bit
+		\item Gewinner mit dem höchstem Gebot zum Preis vom zweit höchstem Gebot
+		\item Beste Strategie: Preisabgabe zum wirklichen Wert
+		\item anfällig für asoziales Verahlten (???)
 	\end{itemize}
 	\section{???}
 	\section{???}	
@@ -661,5 +673,33 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Ansatz 3: Sichten-System; Problem: 
 		\item Besser: Alle Prozesse kommunizieren über Blackboard, Ziel: Wissensverteilung der Partiellen Lösungen
 	\end{itemize}
-
+	\section{Organisationskontrolle}
+	\subsection{Allgemein}
+	\begin{itemize}
+		\item Organisationkontrolle (Wer kann mit den Interagieren) kann Kommunikation und Kooperation vereinfachen (kürzere Entscheidungshierachie, weniger Kommunikation)
+		\item Strukturierung als zentrale Aufgabe reflektiert die Aufgabe und sorgt für eine effizientere Lösung der Aufgabe
+		\item Organisationktrolle funktioniert weil Problem zerlegbar und häufig wiederholt wird
+		\item Framework für die Skalierung der Aufgaben
+		\item Ziel: Wissen lokal Halten damit nicht zusätzlicher Aufwand durch Verwaltung fremden Wissens entsteht
+		\item Oragnisations Tradeoff: 
+	\end{itemize}
+	\section{Agenten und Mobilität}
+	\begin{itemize}
+		\item Verteilte Orte: Wie können diese miteinander Reden?
+		\item Verteilte Systeme: veschiedene Möglichkeiten um Methoden aufzurufen von anderen Koten (Remote Procedure Call)
+		\item Lösungen: Stub, Skeleton. Marshalling (Serialisierung von Objekten),IDL
+		\item Stub hat Reference zu Skeleton-Methodes
+		\item Probleme: 
+		\begin{itemize}
+			\item Client kann blockieren
+			\item Verbindung kann nicht sicher sein (fällt ggf aus), Implementierung von Timeouts usw (unreliable links)
+			\item Übertragung von großer Daten kann Problem sein, besser Server sollte berechnen mit den Daten ohne zu verschicken ABER kennt Algorithmus nicht (Lösung: Mobile Agents)
+		\end{itemize}
+		\item Agenten-basierter Ansatz: Alternative zu RPC ist RP
+		\item Client macht Code für Prozeduren und Klassen bekannt
+		\item Prozedur + Aktuellen Zustand präsentiert einen Mobiler Agent
+		\item Weak migration: ? (standard)
+		\item Strong migration: ?
+		\item Remote Programming: Koventionen zwischen client und server für befehle und datentypen bilden eine Sprache
+	\end{itemize}
 \end{document}
