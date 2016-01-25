@@ -641,6 +641,8 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item second preis, sealed bit
 		\item Gewinner mit dem höchstem Gebot zum Preis vom zweit höchstem Gebot
 		\item Beste Strategie: Preisabgabe zum wirklichen Wert
+		\item überbieten wird dominiert durch bieten des echten Wertes: Wenn Bieter höheren Wert als die anderen gewinnt dieser obwohl er überboten hat; wenn Bieter niedrigeren Wert als andere Bieter hat er verloren obwohl überboten hat oder nicht
+		\item unterbieten wird dominiert durch bieten des echten Wertes: wenn Bieter zu gering verliert er; wenn Bieter zu hoch wird er gewinnen
 		\item anfällig für asoziales Verhalten (???)
 	\end{itemize}
 	\subsection{Probleme}
@@ -668,9 +670,76 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Symmetrisch: jeder Agent spielt äquivalente Rolle
 		\end{itemize}
 		\item MAS: Gruppe von Nutzen-maximierende heterogenen Agenten welche coexistieren in der gleichen Umgebung, evtl Konkurrenz
+		\item Auktionen als Verhandlungsmechanismus für die Teilung von Ressourcen
+		\item in Abhängigkeit von Auktion jeder Agent wählt andere Strategie
+		\item möglich: andere Szenarien für Verhandlungen ausser die Verteilung von Ressourcen
 	\end{itemize}
-	\section{???}
-	\section{???}	
+	\subsection{Verschiedene Domänen}
+	\begin{itemize}
+		\item Aufgaben orientierte Domäne: Agenten wollen Aufgaben erledigen $\rightarrow$ Aufgabenverteilung
+		\item Zustand orientierte Domäne: Ziele sind sind finale Zustände der Welt $\rightarrow$ gemeinsamen Plan
+		\item Wert orientierte Domäne: Zustände haben ein Wert $\rightarrow$ gemeinsamen Plan und Ziel relaxierung
+	\end{itemize}
+	\subsection{Aufgaben orientierte Domäne}
+	\begin{itemize}
+		\item Tripe: $<T,Ag,c>$
+		\item T ist eine endliche Menge von möglichen Aufgaben
+		\item $Ag=\{1,\dots,n\}$ ist eine Menge von beteiligten Agenten
+		\item $c = p(T) \rightarrow R^+$ definiert die Kosten für die Ausführung jeder Teilmenge von Tasks (p ist Potenzmenge)
+		\item Ein Encounter ist eine Menge von Aufgaben: $<T_1,\dots,T_n>$ mit $T_i \subseteq T$ für jedes $i \in Ag$
+		\item Bestandteile: Domäne, Verhandlungsprotokoll, Verhandlungsstrategie
+		\item gegeben ein Encounter $<T_1,T_2>$ ist ein Deal für die Zuweisung $T_1 \cup T_2$ für die Agenten 1 und 2
+		\item die Kosten für den Agenten i eines Deals: $\beta = <D_1,D_2>$ ist $c(D_i)$ (nachfolgend als $cost_i(\beta)$)
+		\item Utility eines Deals $\beta$ des Agenten i ist mit $c(T_i)$ die ursprüngliche Zuweisung deiner Aufgabe für Agent i: $utility_i(\beta) = c(T_i)-cost_i(\beta)$
+		\item conflict deal $\Omega$ ist ein Deal $<T_1,T_2>$ mit den ursprünglichen Zuweisung der Aufgaben: $utility_i(\Omega) = 0, \forall i \in Ag$
+		\item ein Deal ist individuell rational wenn dieser schwach den conflict deal dominiert
+		\item Agenten nutzen Produkt-maximierende Verhandlungsprotokolle
+		\item The Monotonic Concession Protocol ???
+		\begin{itemize}
+			\item Verhandlung in Runden
+			\item Runde 1: Agenten schlagen gleichzeitig ein Deal aus dem Verhandlungsset vor
+			\item Übereinkunft wenn ein Agent findet ein Deal welches mindestens so gut ist wie die anderen vorgeschlagenen
+			\item wenn keine Übereinkunft nächste Runde
+			\item in Runde $u+1$ kein Agent darf schlechteren Deal machen als der aus der vorigen Runde
+			\item wenn kein Übereinkunft gefunden wird nach einigen Runden: Benndet mit Conflict-Deal
+		\end{itemize}
+		\item The Zeuthen Strategy ???
+		\begin{itemize}
+			\item Verhandlung mit dem Ziel der Messung der Bereitschaft ein Risiko einzugehen
+			\item höhere Bereitschaft wenn der unterschied zwischen den aktuellen Vorschlag und Konfliktdeal ist gering
+			\item Erster Vorschlag: der beste Deal eines Agenten
+			\item Jede Runde wird ein Agent riskieren
+			\item Entgegenkommen des Agenten nur soviel bis Risiko erreicht 
+		\end{itemize}
+	\end{itemize}
+	\section{Trust and Reputation}
+	\subsection{Einführung}
+	\begin{itemize}
+		\item Trust: Glaube dass ein anderer Agent eine Aktion tun wird ohne explizite Garantie um ein Ziel in einer riskanten Situation zu erreichen
+		\item Reputation: Was die anderen Agenten sagen bezüglich seines Verhaltens
+		\item Reputation erlaubt die Bildung von Trust; hat eine soziale Komponente welche nicht nur nützlich für ein Agenten ist sondern für alle
+		\item jeder Agent wird durch andere Agenten beobachtet, keine zentrale Autorität
+		\item Subjective vs. Globale Reputation
+		\begin{itemize}
+			\item subjektiv: jeder Agent hat eigene Vorstellung von der Reputation anderer Agenten
+			\item global: Reputation als eine zentrale Resource, alle Agenten haben Zugriff auf die gleichen Reputationswerte
+			\item Vorteil global: Reputation ist Verfügbar auch für neue Agenten; einfachere Agenten da diese Werte nicht berechnet werden müssen
+			\item Nachteil global: funktioniert nur wenn Annahme das alle Agenten denken und verhalten ähnlich da interne Zustände des Agenten nicht berücksichtigt wird; nicht immer erwünscht das Agenten Information public macht oder diese an eine Zentrale Verwaltungsstelle sendet
+			\item Hoher Trust der Zentralen Organisation notwendig
+		\end{itemize}
+		\item Vgl. Ebay: komplett zentral, Käufer hinterlassen Kommentare + Bewertung nach Käufe, jeder Teilnehmer hat einen Wert als Summe der Bewertungen
+		\item Beispiel: Regret System
+	\end{itemize}
+	\subsection{Regret System}
+	\begin{center}
+		\includegraphics[scale=0.3]{img/regret.png}
+	\end{center}
+	\begin{itemize}
+		\item Modulares Trust und Reputations-System für komplexe e-commerce Umgebungen wo Soziale Relationen zwischen den Teilnehmern eine wichtige Rolle spielt
+		\item Outcome: Initialer Vertrag + Realisierung des Partners (Attribute: Lieferungstag, Kosten, Qualität, Quanität)
+		\item Impression: Subjekte Auswertung des Outcomes
+		\item ??? Wie detailiert???
+	\end{itemize}
 	\section{Blackboard}
 	\subsection{Allgemein}
 	\begin{itemize}
