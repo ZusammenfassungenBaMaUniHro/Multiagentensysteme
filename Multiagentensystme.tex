@@ -62,7 +62,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Verschiedene Gebiete der Industrie (Car-Assembly, Factory Management)
 		\item Simulation
 	\end{itemize}
-MAS befindet sich in der Schnittmenge aus KI, Spieltheorie, Sozialforschung und Verteilten Systemen.
+	MAS befindet sich in der Schnittmenge aus KI, Spieltheorie, Sozialforschung und Verteilten Systemen.
 \section{Rolle der Logik in MAS}
 	\subsection{Gründe für Logik}
 	\begin{itemize}
@@ -641,7 +641,33 @@ MAS befindet sich in der Schnittmenge aus KI, Spieltheorie, Sozialforschung und 
 		\item second preis, sealed bit
 		\item Gewinner mit dem höchstem Gebot zum Preis vom zweit höchstem Gebot
 		\item Beste Strategie: Preisabgabe zum wirklichen Wert
-		\item anfällig für asoziales Verahlten (???)
+		\item anfällig für asoziales Verhalten (???)
+	\end{itemize}
+	\subsection{Probleme}
+	\begin{itemize}
+		\item Auktionen sind anfällig für Lügen vom Auktionator und Absprache von Bietern
+		\item alle Auktionen sind können manipuliert werden durch Absprache der Bieter
+		\item ein böser Auktionator kann bei der Vickrey Auktion lügen beim zweit höchsten Gebot
+		\item Shills (Lockvögel) können bei der Englischen Auktion den Preis in die Höhe treiben
+		\item Anwendung von Auktionieren: Lastverteilung, Routing, Koordination
+	\end{itemize}
+	\subsection{Heterogene und selbst-motivierende Agenten}
+	\begin{itemize}
+		\item kein zentrales Design
+		\item es gibt keinen globalen Nutzen
+		\item sind Dynamisch d.h. neue Typen von Agenten können leicht hinzugefügt werden
+		\item Agenten sind nicht wohlwollend solange sie es nicht sein wollen d.h. Agenten kooperieren erst wenn es nötig ist
+		\item Notwendig: Entwickler einigen sich auf Standard wie Agenten in Domäne agieren
+		\item Abstimmung von Möglichkeiten und Tradeoffs für Protokolle, Strategien und die Sozialen Regeln der Agenten
+		\item Eigenschaften von Standards:
+		\begin{itemize}
+			\item Effizienz: Pareto Optimal
+			\item Stabil: kein Grund vom optimal abzuweichen
+			\item Einfach: gerade Berechnungs- und Kommunikationskosten
+			\item Verteilt: kein zentraler Koordinator
+			\item Symmetrisch: jeder Agent spielt äquivalente Rolle
+		\end{itemize}
+		\item MAS: Gruppe von Nutzen-maximierende heterogenen Agenten welche coexistieren in der gleichen Umgebung, evtl Konkurrenz
 	\end{itemize}
 	\section{???}
 	\section{???}	
