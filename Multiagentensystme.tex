@@ -55,7 +55,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{Konkrete Anwendungsgebiete}
 	\begin{itemize}
-		\item Clound-Management
+		\item Cloud-Management
 		\item Ubiquitous Computing
 		\item Grid-Software
 		\item Spiele
@@ -79,13 +79,13 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\begin{itemize}
 			\item $p$: eine Theorie (eine Menge von Regeln)
 			\item $\Delta$: Datenbank mit den aktuellen Zustand der Welt
-			\item $A$: eine Menge von Aktionen welcher ein Agent ausführen kann
+			\item $A$: eine Menge von Aktionen, welche ein Agent ausführen kann
 			\item $\Delta\vdash_{p}\phi$: d.h. $\phi$ kann aus der $\Delta$ unter der Verwendung von $p$ abgeleitet werden, mit $\phi=$Do(a) können wir aus den aktuellen Zustand der Welt auf die bestmögliche Aktion logisch schließen
 		\end{itemize}
 		 \item Algorithmus-Bestandteile (unabhängig von verwendeter Logik)
 		 \begin{itemize}
 		 	\item see(s,p), generiert Beobachtung aus der neuen Welt (schwer siehe Vorlesung Mustererkennung und Kontextanalyse)
-		 	\item next($\Delta$,p), update der Datenbank mit der Beobachtung
+		 	\item next($\Delta$,p), Update der Datenbank mit der Beobachtung
 		 	\item action($\Delta$), ermittelt die auszuführende Aktion aus der Datenbank, entweder ist die Aktion direkt beschrieben oder kann aus den Regeln abgeleitet werden kann
 		 \end{itemize}
 		 \item Algorithmus - Ermittelung einer Aktion aus einer Wissensdatenbank:
@@ -96,7 +96,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		 	\item Falls ja: gebe a zurück sonst gebe NULL zurück (keine Aktion gefunden)
 		 \end{enumerate}
 	\end{itemize}
-	\subsection{Modal Logik}
+	\subsection{Modale Logik}
 	\begin{itemize}
 		\item Erlaubt Ausdrücke wie: wahrscheinlich wahr, geglaubt wahr, wahr in der Zukunft usw.
 		\item kann genutzt werden um Informationen für die Agenten abzuleiten und über das Wissen von Agenten zu schließen
@@ -113,7 +113,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Kripke-Struktur: $<W,R,\mu>$
 			\begin{description}
 				\item[$W$] eine Menge von Welten
-				\item[$R$] eine Menge von binär Relationen, beschreiben den Übergang zwischen den Welten
+				\item[$R$] eine Menge von binären Relationen, beschreiben den Übergang zwischen den Welten
 				\item[$\mu$] Abbildungsfunktion welche jeder Welt Eigenschaften zuordnet ($\mu : W \rightarrow 2^{Prop}$)
 			\end{description}
 			\item Definition von $\diamond$ und $\square$ Operator auf Basis von Erreichbarkeit der Welten in einer Kripke-Struktur
