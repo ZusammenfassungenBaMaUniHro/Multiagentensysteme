@@ -19,7 +19,8 @@
 \title{Zusammenfassung - Multi-Agenten-Systeme}
 \author{
 	Andreas Ruscheinski,
-	Marc Eric Meier
+	Marc Eric Meier, 
+	CD
 }
 \begin{document}
 \maketitle
@@ -403,79 +404,81 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Dominate-Strategie
 		\begin{itemize}
 			\item Aus einer gegebenen Strategie s (Beispiel: D oder C) für Agent $i$ ergeben sich verschiedene Ergebnisse ($\omega$)
-			\item Strategie $s_{1}$ dominiert Strategie $s_{2}$ wenn jedes Ergebnis wenn $s_{1}$ gespielt wird bevorzugt wird gegenüber $s_{2}$
-			\item Rationale Agenten werden niemals dominierte Strategien spielen d.h. es gibt eine Strategie welche besser ist
+			\item Strategie $s_{1}$ dominiert Strategie $s_{2}$, wenn jedes Ergebnis das $s_{1}$ spielt gegenüber $s_{2}$ bevorzugt wird.
+			\item Rationale Agenten werden niemals dominierte Strategien spielen, d.h. es gäbe eine Strategie, die besser ist
 			\item Ziel: dominierte Strategie eliminieren
-			\item Anmerkung: es ist nicht immer möglich nur eine nicht dominierte Strategie zu finden
+			\item Anmerkung: es ist nicht immer möglich, nur eine nicht-dominierte Strategie zu finden.
 		\end{itemize}
 		\item Nash-Equilibrium (Nash-Gleichgewicht):
 		\begin{itemize}
-			\item Strategie $s_i$ und $s_j$ sind ein einem Nash-Gleichgewicht gdw: Unter der Annahme dass Agent i spielt $s_i$ und Agent j kann nicht besser sein als wenn er $s_j$ spielt UND unter der Annahme dass Agent j spielt $s_j$ und Agent i kann nicht besser sein als wenn er $s_i$ spielt
+			\item Strategie $s_i$ und $s_j$ sind in einem Nash-Gleichgewicht gdw: Unter der Annahme, dass Agent i $s_i$ spielt und kann Agent j nicht besser sein, als wenn er $s_j$ spielt \textbf{UND} unter der Annahme, dass Agent j $s_j$ spielt und kann Agent i nicht besser sein, als wenn er $s_i$ spielt
 			\item Aber: nicht jede Interaktion hat ein Nash-Gleichgewicht und einige Interaktionen haben mehrere Nash-Gleichgewichte
 		\end{itemize}
 		\item Pareto Optimum:
 		\begin{itemize}
-			\item Gegeben einer initialen Zuordnung von Gütern für eine Menge von Agenten
-			\item Eine Änderung welche für einen Agent besser ist aber für keinen anderen Agenten schlechter nennt sich Pareto-Verbesserung
+			\item Gegeben: eine initialen Zuordnung von Gütern für eine Menge von Agenten
+			\item Eine Änderung, die für einen Agent besser ist aber für keinen anderen Agenten schlechter nennt sich Pareto-Verbesserung
 			\item Eine Zuweisung ist Pareto-Optimal gdw. keine weiteren Pareto-Verbesserungen gemacht werden können
 		\end{itemize}
 		\item Kompetitive- und Null-Summen-Interaktionen
 		\begin{itemize}
-			\item Szenarios in denen Agenten gegenläufige Präferenzen haben sind streng kompetitiv
+			\item Szenarien in denen Agenten gegenläufige Präferenzen haben, sind streng kompetitiv
 			\item Null-Summen Spiele gdw. die Summe aller Utilitys der Agenten = 0 sind: $u_i(\omega) + u_j(\omega) = 0, \forall \omega \in \Omega$
 			\item Null-Summen Spiele sind streng kompetitiv, im Real-Life selten
 		\end{itemize}
 		\item Beispiel: Prison Dilemma
 		\begin{itemize}
-			\item zwei Männer wurden verhaftet wegen Diebstahl
-			\item wenn jmd gesteht und der andere nicht geht der Geständige 3 Jahre ins Gefängnis und der andere kommt frei
-			\item wenn beide gestehen beide gehen für 3 Jahre ins Gefängnis
-			\item Wenn keiner gesteht geht jeder 1 Jahr ins Gefängnis
+			\item Zwei Männer wurden wegen Diebstahls verhaftet 
+			\item Wenn einer gesteht und der andere nicht, geht der Schweigende 5 Jahre ins Gefängnis und der andere kommt frei
+			\item Wenn beide gestehen, gehen beide für 3 Jahre ins Gefängnis
+			\item Wenn keiner gesteht, geht jeder 1 Jahr ins Gefängnis
 			\item Nash-Equilibirum gdw. jeder gesteht
 			\item Besser wäre aber wenn jeder schweigt
 		\end{itemize}
-		\item Grundlegendes Problem von Multi-Agenten Interaktionen: es wird keine Kooperation entstehen wenn jeder Agent egoistisch ist
+		\item Grundlegendes Problem von Multi-Agenten Interaktionen: Es wird keine Kooperation entstehen, wenn jeder Agent egoistisch ist
 		\item Lösung: Annahme mein Gegenspieler ist meine Zwilling, oder Shadow of the Future (nochmaliges treffen in der Zukunft)
 		\item Iterated Prison Dilemma
 		\begin{itemize}
 			\item Lösung: Spiele das Spiel mehrmals
+%TODO Vertauscht? Es würde immer gestanden werden, um mehr Payoff rauszuholen
 			\item Rückwärts Indutkion: Annahme wir spielen n mal, in Runde n-1 wollen wir schweigen für höheren Payoff, dadurch wird n-2 zur letzten richtigen Runde wo wir auch schweigen würden für höheren Payoff $\dots$ Prison-Dilemma mit fixer Anzahl an Runden ist schweigen immer die beste Strategie
 			\item Untersuchung in Axelrods Tournament: Iterated Prison Dilemma gegen verschiedene Gegner
 			\item Verschiedene Stragiegien: ALLD (always defect), TIT-FOR-TAT (Kooperation in der ersten Runde, danach immer die Aktion welche der Gegner gespielt hat), TESTER, JOSS
 		\end{itemize}
 	\end{itemize}
-	\subsection{Benevolent Agents}
+	\subsection{Benevolent Agents - Gutmütige Agenten}
 	\begin{itemize}
-		\item Wenn wir das ganze System kontrollieren können wir Agenten bauen welche sich gegenseitig unterstützen
-		\item Es gibt Konventionen über das Verhalten
-		\item Unter dieser Annahme: Unsere Agenten sind mehr oder weniger gutmütig d.h. unser bestes Ziel ist deren bestes Ziel
-		\item gutmütige Agenten vereinfachen das System-Design
-		\item gutmütige Agenten haben eigene Interesse kollidieren aber nicht mit anderen Interessen
+		\item Wenn wir das ganze System kontrollieren, können wir Agenten bauen, die sich gegenseitig unterstützen.
+		\item Es gelten Konventionen über das Verhalten.
+		\item Unter dieser Annahme: Unsere Agenten sind mehr oder weniger gutmütig, d.h. unser bestes Ziel ist deren bestes Ziel.
+		\item Gutmütige Agenten vereinfachen das System-Design.
+		\item Gutmütige Agenten haben eigene Interesse, die aber nicht mit anderen Interessen kollidieren.
 	\end{itemize}
 \section{Agenten Kommunikation}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Kommunikation ist der Austausch zwischen Informationen
-		\item für Kooperation ist es notwendig zu kommunizieren: Speech Acts, KQML \& KIF, FIPA ACL
+		\item Kommunikation ist der Austausch von Informationen zwischen Agenten.
+		\item Für Kooperation ist es notwendig zu kommunizieren: Speech Acts, KQML \& KIF, FIPA ACL
 	\end{itemize}
 	\subsection{Speech Acts}
 	\begin{itemize}
-		\item Behandlung der Kommunikation bei multi Agenten ist häufig angelegt an die Speech-Act-Theory
-		\item Alles was wir äußern wird geäußert um ein Ziel oder eine Intention zu erfüllen
-		\item Speech Act Theorie: Wie Äußerungen genutzt werden um eine Ziel zu erreichen
+		\item Behandlung der Kommunikation bei Multi-Agenten-Systemen ist häufig an die Speech-Act-Theory angelegt
+		\item Alles wird geäußert, um ein Ziel oder eine Intention zu erfüllen
+		\item Speech Act Theorie: Wie Äußerungen genutzt werden, um Ziele zu erreichen
 		\item Verschiedene Typen von Speech Acts (Searle):
 		\begin{description}
 			\item [Representatives:] informieren zb. \emph{Es regnet.}
-			\item [Directives:] versucht den Hörer, zu etwas zu bewegen zb. \emph{Bitte mach mir Tee!}
-			\item [Commissives:] Sprecher verspricht, etwas zu tun zb. \emph{Ich verspreche, dir einen Tee zu machen}
+			\item [Directives:] versucht den Hörer zu etwas zu bewegen zb. \emph{Bitte mach mir Tee!}
+			\item [Commissives:] Sprecher verspricht etwas zu tun zb. \emph{Ich verspreche, dir einen Tee zu machen}
 			\item [Expressives:] Sprecher teilt seinen mentalen Zustand mit z.b Danke
 			\item [Declarations:] wie \emph{Krieg erklären} oder \emph{Taufe}
 		\end{description}
-		\item jeder Speech-Act hat zwei Komponenten: performative Verb (anfordern, informieren, ...) $+$ propositional content (die Tür ist verschlossen)
+		\item Jeder Speech-Act hat zwei Komponenten: \\
+		performative Verb (anfordern, informieren, ...) $+$ propositional content (die Tür ist verschlossen)
 		\item Communication as Action: den Hörer zu einer Aktion zu bewegen
 		\begin{itemize}
 			\item Versprechen: Sachen anbieten oder Sachen zu tun (Promise)
-			\item Anfrage: Anderen Agenten etwas für über die Gruppe fragen (Query)
+			\item Anfrage: Anderen Agenten etwas über die Gruppe fragen (Query)
 			\item Bitte: Anderen Agenten bitten etwas zu tun (Request)
 		\end{itemize}
 		\item Probleme mit Kommunikation: Wann soll kommuniziert werden? Welcher Speech-Act ist der richtige für die aktuelle Situation? 
@@ -493,27 +496,27 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 				\item Perception: H empfängt $W^1$ (ideal $W^1 = W$)
 				\item Analysis: H schließt aus $W^1$ mögliche Bedeutungen $P_1,\dots,P_n$
 				\item Disambiguation: H schließt dass S $P_i$ mitgeleit werden möchte (ideal $P_i = P$)
-				\item Intercorporation: H entschließt $P_i$ zu glauben (oder verwirft es wenn es nicht mit dem aktuellen Glauben zusammen passt)
+				\item Intercorporation: H entschließt $P_i$ zu glauben (oder verwirft es, wenn es nicht mit dem aktuellen Glauben zusammen passt)
 			\end{enumerate}
 		\end{itemize}
 		\item Modelle der Kommunikation
 		\begin{itemize}
-			\item Encoded Message Model: Sprecher kodiert Nachricht in Wörter, Hörer versucht Nachricht zu dekodieren; Die Bedeutung der Sprecher Nachricht, die Übertragene Nachricht und die Interpretion sind gleich (falls keine Probleme der Kommunikation auftreten)
-			\item Situated Langage Model: Bedeutung der Nachricht beruht nun auf er Nachricht und der Situation
+			\item \textbf{Encoded Message Model}: Sprecher kodiert die Nachricht in Wörtern, Der Hörer versucht die Nachricht zu dekodieren; Die Bedeutung der Nachricht, die übertragene Nachricht und die Interpretion sind gleich (falls keine Probleme der Kommunikation auftreten)
+			\item \textbf{Situated Langage Model}: Bedeutung der Nachricht beruht nun auf er Nachricht und der Situation
 		\end{itemize}
 		\item Typen von kommunizierenden Agenten
 		\begin{itemize}
-			\item Kommunikation unter Verwendung von Tell und Ask: Agenten teilen sich eine gemeinsame interne Repräsentation einer Sprache; Kommunikation ohne Verwendung einer externen Sprache
+			\item Kommunikation unter Verwendung von \textbf{Tell und Ask}: Agenten teilen sich eine gemeinsame interne Repräsentation einer Sprache; Kommunikation ohne Verwendung einer externen Sprache
 			\begin{center}
 				\includegraphics[scale=0.3]{img/tell and ask.png}
 			\end{center}
-			\item Kommunikation unter Verwendung von Formalen Sprachen: Agenten machen sich keine Annahmen über die interne Repräsentation der Sprache; Agenten teilen eine gemeinsame Sprache für die Kommunikation
+			\item Kommunikation unter Verwendung von \textbf{Formalen Sprachen}: Agenten machen keine Annahmen über die interne Repräsentation der Sprache; Agenten teilen eine gemeinsame Sprache für die Kommunikation.
 			\begin{center}
-				\includegraphics[scale=0.3]{img/formal language.png}
+				\includegraphics[scale=0.3]{img/formalLanguage.png}
 			\end{center}
 		\end{itemize}
-		\item Größtes Problem: Kommunikation ist zweideutig; Lösung durch Berücksichtigung des Contexts und der vorigen Kommunikationen
-		\item Definition der Semantik auf Basis von Planung: bestimmte Prädikate welche in der jeweiligen precondition-delete-add Listen verwaltet werden
+		\item Größtes Problem: Kommunikation ist zweideutig; Lösung unter Berücksichtigung des Kontextes und der vorigen Kommunikationen
+		\item Definition der Semantik auf Basis von Planung: bestimmte Prädikate, die in der jeweiligen precondition-delete-add Listen verwaltet werden
 		\item Beispiel: request(s,h,$\phi$)
 		\begin{itemize}
 			\item pre: s glaubt h kann $\phi$ tun; s glaubt h glaubt h kann $\phi$; s glaubt s will $\phi$
@@ -522,29 +525,29 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{KQML und KIF}
 	\begin{itemize}
-		\item nun Betrachtung von Agent Communication Languages (ACLs) d.h. standard Formate für den Austausch von Nachrichten
-		\item bekannteste ACL: KQML
-		\item zwei Bestandteile: Wissens-Abfrage und -Manipulations Sprache (KQML) und Wissens-Austausch Format (KIF)
-		\item KQML ist eine äußere Sprache welche verschiedene akzeptierbare Verben (performatives) definiert (Bsp: ask-if, perform, tell, reply)
-		\item KIF ist eine Sprache für die Repräsentation des Nachrichteninhaltes (meistens sowas wie Common Lisp)
-		\item für die Kommunikation müssen die Agenten das gleiche Verständnis von Ausdrücken haben (Was bedeutet Schalter1?), formale Definition in einer Ontology
+		\item Nun Betrachtung von Agent Communication Languages (ACLs) d.h. dem Standardformat für den Austausch von Nachrichten
+		\item Bekannteste ACL: KQML (Knowledge Query and Manipulation Language)
+		\item Zwei Bestandteile: Wissens-Abfrage und -Manipulations Sprache (KQML) und Wissens-Austausch Format (KIF)
+		\item KQML ist eine äußere Sprache, die verschiedene akzeptierbare Verben (performatives) definiert (Bsp: ask-if, perform, tell, reply)
+		\item KIF (knowledge interchange format)ist eine Sprache für die Repräsentation des Nachrichteninhaltes (meistens ähnlich zu Common Lisp)
+		\item Für die Kommunikation müssen die Agenten das gleiche Verständnis von Ausdrücken haben (Was bedeutet Schalter1?), formale Definition in einer Ontologie
 	\end{itemize}
 	\subsection{FIPA}
 	\begin{itemize}
-		\item neue Entwicklung der Agenten Standards inc. ACL
+		\item Neue Entwicklung der Agenten Standards incl. ACL
 		\item Basisstrukltur ist ähnlich zu KQML: Permative + Housekeeping + Content
 		\item INFORM und REQUEST sind die zwei Standard Permative in FIPA; der Rest wird auf Basis dieser definiert
-		\item Bedeutung von INFORM und REQUEST hat zwei Parts: pre-condition (muss wahr sein damiot der Speech Act erfolgreich ist), rational effect (Ziel welches der Sender der Nachricht erreichen möchte)
+		\item Bedeutung von INFORM und REQUEST hat zwei Parts: pre-condition (muss wahr sein damit der Speech Act erfolgreich ist), rational effect (Ziel, das der Sender der Nachricht erreichen möchte)
 		\item Beschreibung der pre-condtions usw als logischer Ausdruck
 	\end{itemize}
 	\subsection{Ontologien}
 	\begin{itemize}
 		\item Situation: Service Oriented Computing
-		\item Alle Teilnehmer haben ein gemeinsames, gleiches Verständniss von Begriffen über eine Domäne (Ontologie) d.h. jeder Teilnehmer weiß genau was unter einem bestimmten Begriff zu verstehen ist
+		\item Alle Teilnehmer haben ein gemeinsames, gleiches Verständniss von Begriffen über einer Domäne (Ontologie) d.h. jeder Teilnehmer weiß genau, was unter einem bestimmten Begriff zu verstehen ist
 		\item Eine Ontologie beschreibt Begriffe und deren Relationen zu einander
-		\item Ontologien unterstützen die Interaktion dadruch dass sie Begriffe eine Bedeutung geben
-		\item Ontologien-Sprachen erlauben den User eine explizite und formale Konzeptionierung der Domäne
-		\item Problem: je umfangreicher die Sprache desto schwieriger wird es daraus zu schließen
+		\item Ontologien unterstützen die Interaktion. Dadurch, dass sie Begriffen eine Bedeutung geben
+		\item Ontologie-Sprachen erlauben dem Nutzer eine explizite und formale Konzeptionierung der Domäne
+		\item Problem: je umfangreicher die Sprache desto schwieriger wird es aus diesen zu schließen
 		\item Schließen in einer Ontology
 		\begin{itemize}
 			\item Klassenzugehörigkeit: Wenn x in der Klasse C und C eine Unterklasse von D, ist x auch in der Klasse D
@@ -552,7 +555,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Konsistenz: Wir haben X Instanzen von A und B aber  A und B sind disjunkt d.h. Fehler in der Ontologie
 			\item Klassifikation: gegeben Eigenschaft-Werte-Paare für Klasse A, wenn x die Kriterien erfüllt ist x in A
 		\end{itemize}
-		\item Schließen ist wichtig für: Überprüfung der Ontologie und des Wissens; Überprüfung ob ungewollte Beziehungen der Klassen entstanden sind; automatische Zuordnung von Instanzen zu Klassen
+		\item Schließen ist wichtig für: Überprüfung der Ontologie und des Wissens; Überprüfung, ob ungewollte Beziehungen der Klassen entstanden sind; automatische Zuordnung von Instanzen zu Klassen
 		\item Überprüfungen sind wertvoll für: den Entwurf von großen Ontologien mit meheren Autoren; Integration und Verteilung anderer Ontologien an/von verschieden Quellen
 	\end{itemize}
 	\section{Wie sollten Agenten kommunizieren? Strategien und Protokolle}
