@@ -14,6 +14,7 @@
 \usepackage{algpseudocode}
 \usepackage{tikz}
 \usepackage{sgame}
+\usepackage{multicol}
 \usepackage[labelformat=empty]{caption}
 
 \title{Zusammenfassung - Multi-Agenten-Systeme}
@@ -50,7 +51,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Ein Problem kann nicht zentralisiert gelöst werden, da die \textbf{Ressourcen limitiert} sind.\\
 		$\rightarrow$\textit{Verteilte Berechnungen}
 		\item \textbf{Reduktion der Ausfall-Wahrscheinlichkeit} gegenüber einem zentralisierten System
-		\item \textbf{Gewährleistung der inter-konnektion und inter-operation} von verschiedenen Systemen\\
+		\item \textbf{Gewährleistung der Interkonnektion und Interoperation} von verschiedenen Systemen\\
 		$\rightarrow$\textit{Migration von veralteter Software}
 		\item Lösung von Problemen, die sich mit einer \textbf{ Menge von autonomen Komponenten beschäftigen}\\
 		$\rightarrow$\textit{Luftfahrkontrolle, Terminkalender}
@@ -80,13 +81,13 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Bestandteile:
 		\begin{itemize}
 			\item $p$: Eine Theorie (Menge von Regeln)
-			\item $\Delta$: Datenbank mit den aktuellen Zustand der Welt
+			\item $\Delta$: Datenbank mit dem aktuellen Zustand der Welt
 			\item $A$: Eine Menge von Aktionen, die ein Agent ausführen kann
 			\item $\Delta\vdash_{p}\phi$: d.h. $\phi$ kann aus der $\Delta$ unter der Verwendung von $p$ abgeleitet werden, mit $\phi=$Do(a) können wir aus dem aktuellen Zustand der Welt auf die bestmögliche Aktion logisch schließen.
 		\end{itemize}
 		 \item Algorithmus-Bestandteile (unabhängig von einer verwendeter Logik)
 		 \begin{itemize}
-		 	\item \textbf{see(s,p)}, generiert Beobachtung aus der neuen Welt (schwer siehe Vorlesung Mustererkennung und Kontextanalyse)
+		 	\item \textbf{see(s,p)}, generiert Beobachtung aus der aktuellen Welt $s$ (schwer siehe Vorlesung Mustererkennung und Kontextanalyse)
 		 	\item \textbf{next($\Delta$,p)}, Update der Datenbank mit der Beobachtung
 		 	\item \textbf{action($\Delta$)}, ermittelt die auszuführende Aktion aus der Datenbank, entweder ist die Aktion direkt beschrieben oder kann aus den Regeln abgeleitet werden.
 		 \end{itemize}
@@ -112,14 +113,18 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\end{itemize}
 		\item Semantik:
 		\begin{itemize}
-			\item Kripke-Struktur: $<W,R,\mu>$
+			\item Kripke-Struktur: $\mathcal{K} = <W,R,\mu>$
 			\begin{description}
 				\item[$W$] eine Menge von Welten
-				\item[$R$] eine Menge von binären Relationen, die den Übergang zwischen den Welten  beschreiben.
-				\item[$\mu$] Abbildungsfunktion, die jeder Welt Eigenschaften zuordnet ($\mu : W \rightarrow 2^{Prop}$)\\
-				
+				\item[$R$] eine Menge von binären Relationen, die den Übergang zwischen den Welten  beschreiben
+				\item[$\mu$] Abbildungsfunktion, die jeder Welt Eigenschaften zuordnet ($\mu : W \rightarrow 2^{Prop}$)	
 			\end{description}
-			
+				\item Rahmen: $<W,R>$
+				\begin{itemize}
+					\item  $W$ und $R$ definiert, wie in Kripke Struktur
+					\item $R \vdash F$, falls gilt: $\forall \mathcal{K},s: \mathcal{K},s \vDash F$ 
+					\item Die \textbf{Korrespondenztheorie}: Zusammenhang zwischen Axiomensystemen und Rahmen					
+				\end{itemize}
 			\item Definition von $\diamond$ und $\square$ Operator auf Basis von Erreichbarkeit der Welten in einer Kripke-Struktur
 			\item $\square p$: p ist wahr in allen Welten, welche von der aktuellen Welt erreichbar sind
 			\item $<M,w>\vDash\square p$, wenn für alle $w' \in W$ gilt: wenn $(w,w') \in R$ denn $<M,w'>\vDash p$
@@ -134,13 +139,25 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 				\item[euklidisch] wenn für jedes $x,y,z \in W$ mit $R(x,y)$ und $R(x,z)$, dann gilt auch $R(y,z)$, d.h. wenn man von x nach y und von x nach z gehen kann, dann kann man auch von y nach z gehen.\\
 				
 			\end{description}
-			
+			\begin{table}[h]
+				\centering
+				\label{my-label}
+				\begin{tabular}{llll}
+					\hline
+					Name & Axiom                          & Condition on R & First-order characterization \\ \hline
+					T    & $\square\phi \Rightarrow \phi$ & Reflexive      & $\forall w\in W:(w,w)\in R$  \\
+					D & $\square\phi \Rightarrow \diamond\phi$ &        Serial        &$\forall w \in W : \exists w' \in W: (w,w')\in R$\\
+					4&$\square\phi\Rightarrow\square\square\phi$ &            Transitive    & $\forall$ \\
+					5 &$\diamond\phi\Rightarrow\square\diamond\phi$&     Euclidiean           &                              \\ \hline
+				\end{tabular}
+		\caption{Korrespondenztheorie}
+			\end{table}
 			\item Axiome (Beschreiben Eigenschaften für $R$):
 			\begin{description}
-				\item[$\square p \Rightarrow p$] Wann immer $p$ wahr ist, folgt daraus das aktuell p gilt (Reflexiv)
-				\item[$\square p \Rightarrow \diamond p$]Wann immer $p$ wahr ist, ist p auch in mindestens einer Welt wahr (Seriell)
-				\item[$\square p \Rightarrow \square \square p$]Wann immer $p$ wahr ist, ist p auch immer wahr, wenn wir einen Übergang machen (transitiv)
-				\item[$\diamond p \Rightarrow \square \diamond p$] Wenn $p$ in mindestens einer Welt wahr ist, ist p für immer wahr, wenn wir diese Welt erreicht haben (Euklidisch)\\
+				\item[$\square p \Rightarrow p$] Wann immer $p$ wahr ist, folgt daraus, dass aktuell p gilt (\textbf{Reflexiv})
+				\item[$\square p \Rightarrow \diamond p$]Wann immer $p$ wahr ist, ist p auch in mindestens einer Welt wahr (\textbf{Seriell})
+				\item[$\square p \Rightarrow \square \square p$]Wann immer $p$ wahr ist, ist p auch immer wahr, wenn wir einen Übergang machen (\textbf{transitiv})
+				\item[$\diamond p \Rightarrow \square \diamond p$] Wenn $p$ in mindestens einer Welt wahr ist, ist p für immer wahr, wenn wir diese Welt erreicht haben (\textbf{euklidisch})\\
 				
 			\end{description}
 			
