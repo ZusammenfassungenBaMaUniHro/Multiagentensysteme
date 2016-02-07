@@ -162,7 +162,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 				\item Agent glaubt alles was wahr ist incl. Tautologien: wenn $\vDash p$ denn $K_i p$
 				\item Agent weiß alle Schlussfolgerungen des eigenen Wissens: $\vDash p \rightarrow q$ denn $\vDash K_i p \rightarrow K_i q$ (Kripke Axiom: $K_i(p\rightarrow q) \rightarrow (K_i p \rightarrow K_i q)$)
 				\item Menschliches Wissen ist oft inkonsistent
-				\item Menschen glauben nicht alle equivalenten Aussagen
+				\item Menschen glauben nicht alle äquivalenten Aussagen
 			\end{itemize}
 		\end{itemize}
 	\end{itemize}
@@ -222,7 +222,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\begin{itemize}
 			\item Ein Verhalten (Behavior) $b \in Beh$ ist ein Tupel $(c,a)$ mit $c \subseteq P, a \in A$ wobei P eine Menge von Beobachtungen und A eine Menge von Aktionen ist.
 			\item Ein Verhalten wird ausgeführt, wenn die Umgebung sich in dem Zustand $s\in S$ befindet und $see(s) \in c$
-			\item Subsumption Hierachie wird realisiert durch eine Hemmungs-Relation $b_{1} \prec b_{2}$ ($b_{1}$ hemmt $b_{2}$ d.h. $b_{1}$ hat eine höhere Priorität)
+			\item Subsumption Hierarchie wird realisiert durch eine Hemmungs-Relation $b_{1} \prec b_{2}$ ($b_{1}$ hemmt $b_{2}$ d.h. $b_{1}$ hat eine höhere Priorität)
 		\end{itemize}
 		\item Aktionsauswahl-Algorithmus:
 		\begin{enumerate}
@@ -283,7 +283,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\end{itemize} 
 			\item Konsistenz: Wenn $S_{i} \prec S_{j}$ denn $S_{j} \prec S_{i}$ und wenn $x=A$ denn $x \neq B$ für verschiedene A und B für die Variable x.
 		\end{itemize}
-		\item Vorlesungfolien für Beispiel!!!
+		\item Vorlesungsfolien für Beispiel!!!
 		\item Iterative Erstellung eines Plans durch rückwärts Anwenden der Regeln, d.h. in jedem Schritt wird eine offene Bedingung durch die entsprechende Aktion erfüllt.
 		\item Dadurch können Konflikte entstehen:
 		\begin{itemize}
@@ -364,7 +364,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 \section{Kooperation von Agenten}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Ein Multiagenten System besteht aus mehren Agenten, die
+		\item Ein Multi-Agenten-System besteht aus mehren Agenten, die
 		\begin{itemize}
 			\item durch Kommunikation interagieren
 			\item mit der Umgebung interagieren können
@@ -401,7 +401,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{Strategien}
 	\begin{itemize}
-		\item Dominate-Strategie
+		\item Dominante-Strategie
 		\begin{itemize}
 			\item Aus einer gegebenen Strategie s (Beispiel: D oder C) für Agent $i$ ergeben sich verschiedene Ergebnisse ($\omega$)
 			\item Strategie $s_{1}$ dominiert Strategie $s_{2}$, wenn jedes Ergebnis das $s_{1}$ spielt gegenüber $s_{2}$ bevorzugt wird.
@@ -426,7 +426,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Null-Summen Spiele gdw. die Summe aller Utilitys der Agenten = 0 sind: $u_i(\omega) + u_j(\omega) = 0, \forall \omega \in \Omega$
 			\item Null-Summen Spiele sind streng kompetitiv, im Real-Life selten
 		\end{itemize}
-		\item Beispiel: Prison Dilemma
+		\item Beispiel: Prisoners Dilemma
 		\begin{itemize}
 			\item Zwei Männer wurden wegen Diebstahls verhaftet 
 			\item Wenn einer gesteht und der andere nicht, geht der Schweigende 5 Jahre ins Gefängnis und der andere kommt frei
@@ -441,9 +441,9 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\begin{itemize}
 			\item Lösung: Spiele das Spiel mehrmals
 %TODO Vertauscht? Es würde immer gestanden werden, um mehr Payoff rauszuholen
-			\item Rückwärts Indutkion: Annahme wir spielen n mal, in Runde n-1 wollen wir schweigen für höheren Payoff, dadurch wird n-2 zur letzten richtigen Runde wo wir auch schweigen würden für höheren Payoff $\dots$ Prison-Dilemma mit fixer Anzahl an Runden ist schweigen immer die beste Strategie
+			\item Rückwärts Induktion: Annahme wir spielen n mal, in Runde n-1 wollen wir schweigen für höheren Payoff, dadurch wird n-2 zur letzten richtigen Runde wo wir auch schweigen würden für höheren Payoff $\dots$ Prisoners-Dilemma mit fixer Anzahl an Runden ist schweigen immer die beste Strategie
 			\item Untersuchung in Axelrods Tournament: Iterated Prison Dilemma gegen verschiedene Gegner
-			\item Verschiedene Stragiegien: ALLD (always defect), TIT-FOR-TAT (Kooperation in der ersten Runde, danach immer die Aktion welche der Gegner gespielt hat), TESTER, JOSS
+			\item Verschiedene Strategien: ALLD (always defect), TIT-FOR-TAT (Kooperation in der ersten Runde, danach immer die Aktion welche der Gegner gespielt hat), TESTER, JOSS
 		\end{itemize}
 	\end{itemize}
 	\subsection{Benevolent Agents - Gutmütige Agenten}
@@ -495,7 +495,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\begin{enumerate}
 				\item Perception: H empfängt $W^1$ (ideal $W^1 = W$)
 				\item Analysis: H schließt aus $W^1$ mögliche Bedeutungen $P_1,\dots,P_n$
-				\item Disambiguation: H schließt dass S $P_i$ mitgeleit werden möchte (ideal $P_i = P$)
+				\item Disambiguation: H schließt, dass S $P_i$ mitteilen möchte (ideal $P_i = P$)
 				\item Intercorporation: H entschließt $P_i$ zu glauben (oder verwirft es, wenn es nicht mit dem aktuellen Glauben zusammen passt)
 			\end{enumerate}
 		\end{itemize}
@@ -535,7 +535,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{FIPA}
 	\begin{itemize}
 		\item Neue Entwicklung der Agenten Standards incl. ACL
-		\item Basisstrukltur ist ähnlich zu KQML: Permative + Housekeeping + Content
+		\item Basisstruktur ist ähnlich zu KQML: Permative + Housekeeping + Content
 		\item INFORM und REQUEST sind die zwei Standard Permative in FIPA; der Rest wird auf Basis dieser definiert
 		\item Bedeutung von INFORM und REQUEST hat zwei Parts: pre-condition (muss wahr sein damit der Speech Act erfolgreich ist), rational effect (Ziel, das der Sender der Nachricht erreichen möchte)
 		\item Beschreibung der pre-condtions usw als logischer Ausdruck
@@ -543,20 +543,20 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Ontologien}
 	\begin{itemize}
 		\item Situation: Service Oriented Computing
-		\item Alle Teilnehmer haben ein gemeinsames, gleiches Verständniss von Begriffen über einer Domäne (Ontologie) d.h. jeder Teilnehmer weiß genau, was unter einem bestimmten Begriff zu verstehen ist
+		\item Alle Teilnehmer haben ein gemeinsames, gleiches Verständnis von Begriffen über einer Domäne (Ontologie) d.h. jeder Teilnehmer weiß genau, was unter einem bestimmten Begriff zu verstehen ist
 		\item Eine Ontologie beschreibt Begriffe und deren Relationen zu einander
 		\item Ontologien unterstützen die Interaktion. Dadurch, dass sie Begriffen eine Bedeutung geben
-		\item Ontologie-Sprachen erlauben dem Nutzer eine explizite und formale Konzeptionierung der Domäne
+		\item Ontologie-Sprachen erlauben dem Nutzer eine explizite und formale Kozeptionierung der Domäne
 		\item Problem: je umfangreicher die Sprache desto schwieriger wird es aus diesen zu schließen
-		\item Schließen in einer Ontology
+		\item Schließen in einer Ontologie
 		\begin{itemize}
 			\item Klassenzugehörigkeit: Wenn x in der Klasse C und C eine Unterklasse von D, ist x auch in der Klasse D
-			\item Klassenequivalenz: Wenn Klasse A ist equivalent zu B und B zu C denn ist A equivalent zu C
+			\item Klassenäquivalenz: Wenn Klasse A ist äquivalent zu B und B zu C denn ist A äquivalent zu C
 			\item Konsistenz: Wir haben X Instanzen von A und B aber  A und B sind disjunkt d.h. Fehler in der Ontologie
 			\item Klassifikation: gegeben Eigenschaft-Werte-Paare für Klasse A, wenn x die Kriterien erfüllt ist x in A
 		\end{itemize}
 		\item Schließen ist wichtig für: Überprüfung der Ontologie und des Wissens; Überprüfung, ob ungewollte Beziehungen der Klassen entstanden sind; automatische Zuordnung von Instanzen zu Klassen
-		\item Überprüfungen sind wertvoll für: den Entwurf von großen Ontologien mit meheren Autoren; Integration und Verteilung anderer Ontologien an/von verschieden Quellen
+		\item Überprüfungen sind wertvoll für: den Entwurf von großen Ontologien mit mehren Autoren; Integration und Verteilung anderer Ontologien an/von verschieden Quellen
 	\end{itemize}
 	\section{Wie sollten Agenten kommunizieren? Strategien und Protokolle}
 	\subsection{Einführung}
@@ -567,20 +567,20 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Contract Net}
 	\begin{itemize}
 		\item Realisierung von Multi-Cast Kommunikation in Agenten-basierten Systemen
-		\item zwei Rollen: Selector und Contractor
-		\item Contract Net: Aufgabenverteilungs-Protokol für Aufgabenzuweisung
+		\item Zwei Rollen: Selector und Contractor
+		\item Contract Net: Aufgabenverteilungs-Protokoll für Aufgabenzuweisung
 		\item Schritte:
 		\begin{enumerate}
 			\item Recognition: Feststellung des Problems
 			\item Announcement: Mitteilung des Problems an alle Teilnehmer
-			\item Bidding: Teilnehmer beantworten mit den erwarteten Kosten
-			\item Awarding: Auftragsgeber belohnt den ausgewählten Teilnehmer
+			\item Bidding: Teilnehmer antworten mit den erwarteten Kosten
+			\item Awarding: Auftragsgeber teilt einem Teilnehmer die Aufgabe zu
 			\item Expediting: Ausführung
 		\end{enumerate}
 		\item Recognition
 		\begin{itemize}
 			\item Agent nimmt Problem wahr
-			\item Agent hat Ziel und: merkt dass er das Ziel nicht alleine erreichen kann (Nicht genügend Kapazität); merkt dass er dieses Ziel nicht alleine erreichen möchte (Deadline, Lösungsqualität)
+			\item Agent hat Ziel und merkt, dass er das Ziel nicht alleine erreichen kann (Nicht genügend Kapazität) bzw. dass er dieses Ziel nicht alleine erreichen möchte (Deadline, Lösungsqualität)
 		\end{itemize}
 		\item Announcement
 		\begin{itemize}
@@ -590,29 +590,29 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\end{itemize}
 		\item Bidding
 		\begin{itemize}
-			\item Agenten empfangen Announcement und entscheiden sich ob sie für die Aufgabe bieten möchten
-			\item Faktoren: Agent muss entscheiden ob er in der Lage ist die Aufgabe zu bewältigen; Agent muss die Contraints ermitteln ggf. Preis
-			\item wenn sie mitbieten wollen, senden Gebot (tender) an Aufgabensteller
+			\item Agenten empfangen Announcement und entscheiden sich, ob sie für die Aufgabe bieten möchten
+			\item Faktoren: Agent muss entscheiden, ob er in der Lage ist die Aufgabe zu bewältigen; Agent muss die Contraints ermitteln ggf. Preis
+			\item Wenn Agent mitbieten möchte, sendet er ein Gebot (tender) an Aufgabensteller
 		\end{itemize}
 		\item Awarding \& Expediting
 		\begin{itemize}
 			\item Aufgabensteller muss aus den Geboten auswählen und entscheiden wer belohnt werden soll
 			\item Ergebniss wird den teilnehmenden Agenten mitgeteilt
 			\item Erfolgreicher Contractor (Teilnehmer) führt die Aufgabe aus
-			\item ggf. Erweiterung der Contractor Beziehung um weitere unter Beziehungen: sub-contracting
+			\item Ggf. Erweiterung der Contractor Beziehung um weitere Unterbeziehungen: sub-contracting
 		\end{itemize}
 		\item Problem: Spezifikation von ...
 		\begin{itemize}
 			\item Aufgaben: gemeinsame Sprache der Agenten
 			\item Lösungsqualität: Anforderungen (Ontologien), Werbungen und Reputation
-			\item Auswahl von konkurierenden Angeboten: Prefärenzen
+			\item Auswahl von konkurrierenden Angeboten: Präferenzen
 		\end{itemize}
 	\end{itemize}
 	\section{Verhandlungen}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Wie können Agenten eine Übereinkunft treffen wenn sie sich egoistisch verhalten?
-		\item Worst-Case: Null-Summen-Spiele d.h. keine Übereinkunft möglich ABER meistens die Möglichkeit ein kurzeitige Übereinkunft zu treffen zum allgmeinen Intersse
+		\item Wie können Agenten eine Übereinkunft treffen, wenn sie sich egoistisch verhalten?
+		\item Worst-Case: Null-Summen-Spiele d.h. keine Übereinkunft möglich, ABER meistens besteht eine Möglichkeit zum Treffen einer kurzzeitigen Übereinkunft - zum allgemeinen Interesse.
 		\item Fähigkeiten der Verhandlung notwendig
 		\item Verhandlungen werden durch einen Mechanismus (Protokoll) gesteuert
 		\item Mechanismus = Regeln für das Treffen von Agenten
@@ -621,7 +621,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\begin{itemize}
 			\item Konvergenz und garantierter Erfolg
 			\item Maximierung des Gemeinwohles
-			\item Parto-Effizienz
+			\item Pareto-Effizienz
 			\item Individuelle Rationalität
 			\item Stabilität
 			\item Einfachheit
@@ -630,47 +630,50 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{Verhandlung - Auktionen}
 	\begin{itemize}
-		\item Auktionen finden statt zwischen einen Auktionators und eine Menge von Bietern 
+		\item Auktionen finden zwischen einem Auktionator und einer Menge von Bietern statt
 		\item Ziel: Auktionator möchte eine Zuweisung von Gütern (Ressourcen) an einen Bieter erreichen
 		\item Meistens möchte Auktionator den maximalen Preis erreichen, die Bieter den minimalen
 		\item Auktions-Parameter
 		\begin{itemize}
 			\item Güter haben: Privaten Wert, Allgemeinen Wert, Korrelierten Wert
-			\item Gewinnerermittelung durch: erstes Gebot, zweites Gebot
+			\item Gewinnermittelung durch: erstes Gebot, zweites Gebot
 			\item Gebote sind: für alle sichtbar (open cry); verborgen (sealed bid)
 			\item Gebotsabgabe: einmalig (one shot), aufsteigend, absteigend
 		\end{itemize}
 	\end{itemize}
 	\subsubsection{Englische Auktion}
 	\begin{itemize}
-		\item höchstes Gebot gewinnt, für alle sichtbar, aufsteigend
+		\item Höchstes Gebot gewinnt, für alle sichtbar, aufsteigend
 		\item Dominante Strategie: minimale Erhöhung des höchsten Gebotes bis Obergrenze erreicht, falls diese überschritten: Rückzug
-		\item Anfällig: Fluch des Gewinners (Bezahlt meistens zuviel), Lockvögel (Agent arbeitet mit Auktionator zusammen und treibt den Preis künstlich in die Höhe)
+		\item Anfällig: Fluch des Gewinners (Bezahlt meistens zu viel), Lockvögel (Agent arbeitet mit Auktionator zusammen und treibt den Preis künstlich in die Höhe)
 	\end{itemize}
 	\subsubsection{Holländische Auktion}
 	\begin{itemize}
-		\item offene Gebote, absteigend
+		\item Offene Gebote, absteigend
 		\item Auktionator startet mit hohen Startgebot
-		\item Auktionator senkt Preis bis Agent ein Gebot zu dem Preis abgiebt
+		\item Auktionator senkt den Preis, bis ein Agent ein Gebot zu dem Preis abgibt
 		\item Gewinner: Agent mit der Preisabgabe
 	\end{itemize}
 	\subsubsection{First-Price Sealed-Bid Auction}
 	\begin{itemize}
-		\item einmaliges Gebot, verborgen
-		\item eine Runde
+		\item Einmaliges verborgenes Gebot
+		\item Eine Runde
 		\item Bieter sendet Gebot
 		\item Bieter mit höchstem Gebot gewinnt
 		\item Gewinner bezahlt Preis des höchstem Gebotes
-		\item Beste Strategie: biete weniger als der eigentlich wert
+		\item Beste Strategie: biete weniger als den eigentlichen Wert
 	\end{itemize}
 	\subsubsection{Vickrey Auction}
 	\begin{itemize}
-		\item second preis, sealed bit
-		\item Gewinner mit dem höchstem Gebot zum Preis vom zweit höchstem Gebot
+		\item Second preis, sealed bit
+		\item Gewinner mit dem höchstem Gebot zum Preis vom zweit-höchstem Gebot
 		\item Beste Strategie: Preisabgabe zum wirklichen Wert
-		\item überbieten wird dominiert durch bieten des echten Wertes: Wenn Bieter höheren Wert als die anderen gewinnt dieser obwohl er überboten hat; wenn Bieter niedrigeren Wert als andere Bieter hat er verloren obwohl überboten hat oder nicht
-		\item unterbieten wird dominiert durch bieten des echten Wertes: wenn Bieter zu gering verliert er; wenn Bieter zu hoch wird er gewinnen
-		\item anfällig für antisoziales Verhalten
+		\item Überbieten wird dominiert durch das Bieten des echten Wertes
+%TODO Was willst du mir sagen??
+		\item[$\rightarrow$] Wenn ein Bieter mit einem höheren Wert als die anderen gewinnt, hat dieser wohl überboten; wenn Bieter eines niedrigeren Wertes als andere Bieter antritt, hat er verloren obwohl überboten hat oder nicht
+		\item Unterbieten wird dominiert durch Bieten des echten Wertes
+		\item[$\rightarrow$] Wenn ein Bieter zu gering bietet verliert er; wenn ein Bieter zu hoch bietet wird er gewinnen
+		\item Anfällig für antisoziales Verhalten
 		\begin{itemize}
 			\item Agent A beziffert den Wert bei 90\$ und weiß, dass Agent B 100\$ bieten würde.
 			\item Agent A kann Zuschlag also nicht bekommen.
@@ -680,19 +683,19 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Probleme}
 	\begin{itemize}
 		\item Auktionen sind anfällig für Lügen vom Auktionator und Absprache von Bietern
-		\item alle Auktionen sind können manipuliert werden durch Absprache der Bieter
-		\item ein böser Auktionator kann bei der Vickrey Auktion lügen beim zweit höchsten Gebot
+		\item Alle Auktionen sind können durch Absprache der Bieter manipuliert werden 
+		\item Ein böser Auktionator kann bei der Vickrey Auktion bezüglich es zweit höchsten Gebots lügen
 		\item Shills (Lockvögel) können bei der Englischen Auktion den Preis in die Höhe treiben
-		\item Anwendung von Auktionieren: Lastverteilung, Routing, Koordination
+		\item Anwendung von Auktionen: Lastverteilung, Routing, Koordination
 	\end{itemize}
 	\subsection{Heterogene und selbst-motivierende Agenten}
 	\begin{itemize}
-		\item kein zentrales Design
-		\item es gibt keinen globalen Nutzen
-		\item sind Dynamisch d.h. neue Typen von Agenten können leicht hinzugefügt werden
-		\item Agenten sind nicht wohlwollend solange sie es nicht sein wollen d.h. Agenten kooperieren erst wenn es nötig ist
-		\item Notwendig: Entwickler einigen sich auf Standard wie Agenten in Domäne agieren
-		\item Abstimmung von Möglichkeiten und Tradeoffs für Protokolle, Strategien und die Sozialen Regeln der Agenten
+		\item Kein zentrales Design
+		\item Es gibt keinen globalen Nutzen
+		\item Sind Dynamisch d.h. neue Typen von Agenten können leicht hinzugefügt werden
+		\item Agenten sind nicht wohlwollend solange sie es nicht sein wollen d.h. Agenten kooperieren erst, wenn es nötig ist
+		\item Notwendig: Entwickler einigen sich auf Standards, wie Agenten in Domäne zu agieren haben
+		\item Abstimmung von Möglichkeiten und Tradeoffs für Protokolle, Strategien und die sozialen Regeln der Agenten
 		\item Eigenschaften von Standards:
 		\begin{itemize}
 			\item Effizienz: Pareto Optimal
@@ -701,65 +704,65 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Verteilt: kein zentraler Koordinator
 			\item Symmetrisch: jeder Agent spielt äquivalente Rolle
 		\end{itemize}
-		\item MAS: Gruppe von Nutzen-maximierende heterogenen Agenten welche coexistieren in der gleichen Umgebung, evtl Konkurrenz
+		\item MAS: Gruppe von Nutzen-maximierende heterogenen Agenten, die koexistieren in der gleichen Umgebung, evtl. Konkurrenz
 		\item Auktionen als Verhandlungsmechanismus für die Teilung von Ressourcen
-		\item in Abhängigkeit von Auktion jeder Agent wählt andere Strategie
-		\item möglich: andere Szenarien für Verhandlungen ausser die Verteilung von Ressourcen
+		\item In Abhängigkeit von Auktion wählt jeder Agent eine andere Strategie
+		\item Möglich: andere Szenarien für Verhandlungen außer die Verteilung von Ressourcen
 	\end{itemize}
 	\subsection{Verschiedene Domänen}
 	\begin{itemize}
 		\item Aufgaben orientierte Domäne: Agenten wollen Aufgaben erledigen $\rightarrow$ Aufgabenverteilung
-		\item Zustand orientierte Domäne: Ziele sind sind finale Zustände der Welt $\rightarrow$ gemeinsamen Plan
-		\item Wert orientierte Domäne: Zustände haben ein Wert $\rightarrow$ gemeinsamen Plan und Ziel relaxierung
+		\item Zustand orientierte Domäne: Ziele sind bestimmte finale Zustände der Welt $\rightarrow$ gemeinsamen Plan
+		\item Wert orientierte Domäne: Zustände haben einen Wert $\rightarrow$ gemeinsamen Plan- und Ziel-Realisierung
 	\end{itemize}
 	\subsection{Aufgaben orientierte Domäne}
 	\begin{itemize}
 		\item Tripe: $<T,Ag,c>$
 		\item T ist eine endliche Menge von möglichen Aufgaben
 		\item $Ag=\{1,\dots,n\}$ ist eine Menge von beteiligten Agenten
-		\item $c = p(T) \rightarrow R^+$ definiert die Kosten für die Ausführung jeder Teilmenge von Tasks (p ist Potenzmenge)
+		\item $c = p(T) \rightarrow R^+$ definiert die Kosten für die Ausführung jeder Teilmenge von Aufgaben (p ist Potenzmenge)
 		\item Ein Encounter ist eine Menge von Aufgaben: $<T_1,\dots,T_n>$ mit $T_i \subseteq T$ für jedes $i \in Ag$
 		\item Bestandteile: Domäne, Verhandlungsprotokoll, Verhandlungsstrategie
-		\item gegeben ein Encounter $<T_1,T_2>$ ist ein Deal für die Zuweisung $T_1 \cup T_2$ für die Agenten 1 und 2
-		\item die Kosten für den Agenten i eines Deals: $\beta = <D_1,D_2>$ ist $c(D_i)$ (nachfolgend als $cost_i(\beta)$)
-		\item Utility eines Deals $\beta$ des Agenten i ist mit $c(T_i)$ die ursprüngliche Zuweisung deiner Aufgabe für Agent i: $utility_i(\beta) = c(T_i)-cost_i(\beta)$
-		\item conflict deal $\Omega$ ist ein Deal $<T_1,T_2>$ mit den ursprünglichen Zuweisung der Aufgaben: $utility_i(\Omega) = 0, \forall i \in Ag$
-		\item ein Deal ist individuell rational wenn dieser schwach den conflict deal dominiert
+		\item Gegeben ein Encounter, dann ist $<T_1,T_2>$ ein Deal für die Zuweisung $T_1 \cup T_2$ bezüglich der Agenten 1 und 2
+		\item Die Kosten für den Agenten i eines Deals: $\beta = <D_1,D_2>$ ist $c(D_i)$ (nachfolgend als $cost_i(\beta)$)
+		\item Utility eines Deals $\beta$ des Agenten i ist mit $c(T_i)$ die ursprüngliche Zuweisung einer Aufgabe für Agent i: $utility_i(\beta) = c(T_i)-cost_i(\beta)$
+		\item Conflict deal $\Omega$ ist ein Deal $<T_1,T_2>$ mit der ursprünglichen Zuweisung an Aufgaben: $utility_i(\Omega) = 0, \forall i \in Ag$
+		\item Ein Deal ist individuell rational, wenn dieser den conflict deal schwach dominiert
 		\item Agenten nutzen Produkt-maximierende Verhandlungsprotokolle
 		\item The Monotonic Concession Protocol ???
 		\begin{itemize}
 			\item Verhandlung in Runden
-			\item Runde 1: Agenten schlagen gleichzeitig ein Deal aus dem Verhandlungsset vor
-			\item Übereinkunft wenn ein Agent findet ein Deal welches mindestens so gut ist wie die anderen vorgeschlagenen
-			\item wenn keine Übereinkunft nächste Runde
-			\item in Runde $u+1$ kein Agent darf schlechteren Deal machen als der aus der vorigen Runde
-			\item wenn kein Übereinkunft gefunden wird nach einigen Runden: Benndet mit Conflict-Deal
+			\item Runde 1: Agenten schlagen gleichzeitig einen Deal aus dem Verhandlungsset vor
+			\item Übereinkunft, wenn ein Agent einen Deal findet, der mindestens so gut ist wie die von anderen vorgeschlagenen
+			\item Wenn keine Übereinkunft nächste Runde
+			\item In Runde $u+1$ darf kein Agent einen schlechteren Deal machen als der in der vorigen Runde
+			\item Wenn nach einigen Runden keine Übereinkunft gefunden wird: Dann wird die Verhandlung mit dem Conflict-Deal beendet
 		\end{itemize}
-		\item The Zeuthen Strategy ???
+		\item Zeuthen Strategie ???
 		\begin{itemize}
 			\item Verhandlung mit dem Ziel der Messung der Bereitschaft ein Risiko einzugehen
-			\item höhere Bereitschaft wenn der unterschied zwischen den aktuellen Vorschlag und Konfliktdeal ist gering
-			\item Erster Vorschlag: der beste Deal eines Agenten
+			\item Höhere Bereitschaft, wenn der Unterschied zwischen dem aktuellen Vorschlag und dem Konfliktdeal gering ist
+			\item Erster Vorschlag: Der beste Deal eines Agenten
 			\item Jede Runde wird ein Agent riskieren
-			\item Entgegenkommen des Agenten nur soviel bis Risiko erreicht 
+			\item Agenten kommen sich nur soviel entgegen, bis das Risiko erreicht ist
 		\end{itemize}
 	\end{itemize}
 	\section{Trust and Reputation}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Trust: Glaube dass ein anderer Agent eine Aktion tun wird ohne explizite Garantie um ein Ziel in einer riskanten Situation zu erreichen
-		\item Reputation: Was die anderen Agenten sagen bezüglich seines Verhaltens
-		\item Reputation erlaubt die Bildung von Trust; hat eine soziale Komponente welche nicht nur nützlich für ein Agenten ist sondern für alle
-		\item jeder Agent wird durch andere Agenten beobachtet, keine zentrale Autorität
+		\item Trust: Der Glaube, dass ein anderer Agent eine Aktion tun wird, ohne dass explizite Garantien vergeben werden, um ein Ziel in einer riskanten Situation zu erreichen.
+		\item Reputation: Was andere Agenten bezüglich seines Verhaltens sagen
+		\item Reputation erlaubt die Bildung von Trust und hat so eine soziale Komponente, die nicht nur für einen Agenten sondern für alle nützlich ist.
+		\item Jeder Agent wird durch andere Agenten beobachtet, keine zentrale Autorität
 		\item Subjective vs. Globale Reputation
 		\begin{itemize}
-			\item subjektiv: jeder Agent hat eigene Vorstellung von der Reputation anderer Agenten
-			\item global: Reputation als eine zentrale Resource, alle Agenten haben Zugriff auf die gleichen Reputationswerte
-			\item Vorteil global: Reputation ist Verfügbar auch für neue Agenten; einfachere Agenten da diese Werte nicht berechnet werden müssen
-			\item Nachteil global: funktioniert nur wenn Annahme das alle Agenten denken und verhalten ähnlich da interne Zustände des Agenten nicht berücksichtigt wird; nicht immer erwünscht das Agenten Information public macht oder diese an eine Zentrale Verwaltungsstelle sendet
-			\item Hoher Trust der Zentralen Organisation notwendig
+			\item Subjektiv: Jeder Agent hat eine eigene Vorstellung von der Reputation anderer Agenten
+			\item Global: Reputation als eine zentrale Ressource, auf die alle Agenten Zugriff haben und die gleichen Reputationswerte erhalten.
+			\item Vorteil global: Reputation ist auch für neue Agenten verfügbar; einfacher für Agenten, da diese Werte nicht berechnet werden müssen
+			\item Nachteil global: Funktioniert nur unter der Annahme, dass alle Agenten denken und sich ähnlich verhalten, da interne Zustände des Agenten nicht berücksichtigt werden; Es ist nicht immer erwünscht, dass Agenten Information public machen oder diese an eine zentrale Verwaltungsstelle senden
+			\item Ein hoher Trust in die zentralen Organisation ist notwendig
 		\end{itemize}
-		\item Vgl. Ebay: komplett zentral, Käufer hinterlassen Kommentare + Bewertung nach Käufe, jeder Teilnehmer hat einen Wert als Summe der Bewertungen
+		\item Vgl. Ebay: komplett zentral, Käufer hinterlassen Kommentare + Bewertung nach Käufen, jeder Teilnehmer hat einen Wert als Summe der Bewertungen
 		\item Beispiel: Regret System
 	\end{itemize}
 	\subsection{Regret System}
@@ -767,69 +770,70 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\includegraphics[scale=0.3]{img/regret.png}
 	\end{center}
 	\begin{itemize}
-		\item Modulares Trust und Reputations-System für komplexe e-commerce Umgebungen wo Soziale Relationen zwischen den Teilnehmern eine wichtige Rolle spielt
-		\item Outcome: Initialer Vertrag + Realisierung des Partners (Attribute: Lieferungstag, Kosten, Qualität, Quanität)
+		\item Modulares Trust und Reputations-System für komplexe E-Commerce Umgebungen, in denen soziale Relationen zwischen den Teilnehmern eine wichtige Rolle spielen
+		\item Outcome: Initialer Vertrag + Realisierung des Partners (Attribute: Lieferungstag, Kosten, Qualität, Quantität)
 		\item Impression: Subjekte Auswertung des Outcomes
-		\item ??? Wie detailiert???
+		\item ??? Wie detailliert ???
 	\end{itemize}
 	\section{Blackboard}
 	\subsection{Allgemein}
 	\begin{itemize}
-		\item indirekte Kommunikation d.h. keine direkte Kommunikation zwischen den Agenten sondern über ein Medium
-		\item Kommunikation durch schreiben der Information auf Blackboard (zentraler Datenspeicher)
+		\item Indirekte Kommunikation, d.h. keine direkte Kommunikation zwischen den Agenten sondern über ein Medium
+		\item Kommunikation durch Schreiben der Information auf ein Blackboard (zentraler Datenspeicher)
 		\item Agenten können partielle Lösungen für das Problem dort veröffentlichen
-		\item Zentrale Datenstruktur ist Flaschenhals ggf. muss irg welche Hierarchien verfügen
-		\item subscripe-notify pattern: Agent bekündet Interesse über  bestimme Ereignisse, wenn Ereignis eintritt wird Agent benachrichtigt (proaktiv)
+		\item Zentrale Datenstruktur ist Flaschenhals und muss ggf. über irgendwelche Hierarchien verfügen
+		\item Subscripe-notify Pattern: Agent bekundet Interesse an  bestimmen Ereignissen, wenn ein Ereignis eintritt, wird der Agent benachrichtigt (proaktiv)
 		\item Annahmen: verschiedene Agenten greifen asynchron auf die Datenstruktur zu; ????
 		\item Wissensquelle: Agent drückt ein Teil der Lösung aus; ???
 		\item (??? IRG WAS MIT PRECONDITIONS ???)
 		\item Verschiedene Hierarchien für Tests (??? PRECONDITIONS ???)
-		\item Modularität: Man kann einzelne WQ des System entwickeln ohne zu wissen welche anderen WQ es gibt (also indirekte Kommunikation)
+%TODO Wofür steht WQ?
+		\item Modularität: Man kann einzelne WQ des Systems entwickeln, ohne zu wissen welche anderen WQ es gibt (also indirekte Kommunikation)
 		\item Interessant: Wie verändert sich die Systemleistung durch Austausch einzelner WQ?
 		\item Kommunikation:
 		\begin{enumerate}
 			\item Sammlung von Daten über Events für zukünftige Anwendung
-			\item Detektion von Event welche vorige Annahme widersprechen (???)
+			\item Detektion von Ereignissen, die vorigen Annahmen widersprechen (???)
 		\end{enumerate}
-		\item Lokale Kontexte: Jeder hat eigene lokalen Abbild der Datenbank der von Interesse ist, Übertragung neuer Events an entsprechende Interessierte
-		\item (??? Folie über sprungen zu Integrität ???)
-		\item jeder Agent hat eigene Datenbank, Verteilung der Information über Blackboard; lokale Datenbanken bilden zusammen globale Datenbanken
+		\item Lokale Kontexte: Jeder hat ein eigenes lokalen Abbild der Datenbank, die von Interesse ist, Übertragung neuer Events an entsprechende Interessierte
+		\item (??? Folie übersprungen zu Integrität ???)
+		\item Jeder Agent hat eine eigene Datenbank, Verteilung der Information über Blackboard; lokale Datenbanken bilden zusammen eine globale Datenbank
 	\end{itemize}
 	\subsection{Alternative Architekturen}
 	\begin{itemize}
 		\item Beispiel: Speech Understanding,
 		\item Ansatz 1: Pipe-and-Filter Architektur; Problem: keine klare Trennung, ggf Wissen aus unterschiedlichen Quellen notwendig d.h. Architektur wird unnötige komplex
-		\item Ansatz 2: Object-Orientierte-Architektur; Problem: nicht flexibel da jede WQ wissen muss was eine andere WQ produzieren kann; Lösung: Client-Broker Ansatz aber recht komplex
+		\item Ansatz 2: Object-Orientierte-Architektur; Problem: nicht flexibel da jede WQ wissen muss, was eine andere WQ produzieren kann; Lösung: Client-Broker Ansatz aber recht komplex
 		\item Ansatz 3: Sichten-System; Problem: 
 		\item Besser: Alle Prozesse kommunizieren über Blackboard, Ziel: Wissensverteilung der Partiellen Lösungen
 	\end{itemize}
 	\section{Organisationskontrolle}
 	\subsection{Allgemein}
 	\begin{itemize}
-		\item Organisationkontrolle (Wer kann mit den Interagieren) kann Kommunikation und Kooperation vereinfachen (kürzere Entscheidungshierachie, weniger Kommunikation)
+		\item Organisationskontrolle (Wer kann mit wem interagieren) kann Kommunikation und Kooperation vereinfachen (kürzere Entscheidungshierarchie, weniger Kommunikation)
 		\item Strukturierung als zentrale Aufgabe reflektiert die Aufgabe und sorgt für eine effizientere Lösung der Aufgabe
-		\item Organisationktrolle funktioniert weil Problem zerlegbar und häufig wiederholt wird
+		\item Organisationstrolle funktioniert, wenn ein Problem zerlegbar und häufig wiederholbar ist
 		\item Framework für die Skalierung der Aufgaben
-		\item Ziel: Wissen lokal Halten damit nicht zusätzlicher Aufwand durch Verwaltung fremden Wissens entsteht
-		\item Oragnisations Tradeoff: 
+		\item Ziel: Wissen lokal zu halten, damit nicht zusätzlicher Aufwand durch Verwaltung fremden Wissens entsteht
+		\item Organisations Tradeoff
 	\end{itemize}
 	\section{Agenten und Mobilität}
 	\begin{itemize}
-		\item Verteilte Orte: Wie können diese miteinander Reden?
-		\item Verteilte Systeme: veschiedene Möglichkeiten um Methoden aufzurufen von anderen Koten (Remote Procedure Call)
-		\item Lösungen: Stub, Skeleton. Marshalling (Serialisierung von Objekten),IDL
-		\item Stub hat Reference zu Skeleton-Methodes
+		\item Verteilte Orte: Wie können diese miteinander reden?
+		\item Verteilte Systeme: verschiedene Möglichkeiten um Methoden von anderen Koten (Remote Procedure Call) aufzurufen
+		\item Lösungen: Stub, Skeleton. Marshalling (Serialisierung von Objekten), IDL
+		\item Stub hat Referenz zu Skeleton-Methodes
 		\item Probleme: 
 		\begin{itemize}
 			\item Client kann blockieren
 			\item Verbindung kann nicht sicher sein (fällt ggf aus), Implementierung von Timeouts usw (unreliable links)
-			\item Übertragung von großer Daten kann Problem sein, besser Server sollte berechnen mit den Daten ohne zu verschicken ABER kennt Algorithmus nicht (Lösung: Mobile Agents)
+			\item Übertragung von großen Daten kann ein Problem sein. Es ist besser, wenn der Server Berechnungen mit Daten vornimmt - ohne zu verschicken ABER möglicherweise kennt der Server den Algorithmus nicht (Lösung: Mobile Agents)
 		\end{itemize}
 		\item Agenten-basierter Ansatz: Alternative zu RPC ist RP
 		\item Client macht Code für Prozeduren und Klassen bekannt
 		\item Prozedur + Aktuellen Zustand präsentiert einen Mobiler Agent
 		\item Weak migration: ? (standard)
 		\item Strong migration: ?
-		\item Remote Programming: Koventionen zwischen client und server für befehle und datentypen bilden eine Sprache
+		\item Remote Programming: Konventionen zwischen Client und Server für Befehle und Datentypen bilden eine Sprache
 	\end{itemize}
 \end{document}
