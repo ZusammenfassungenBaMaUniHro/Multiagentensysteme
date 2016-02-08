@@ -774,13 +774,15 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item In Runde $u+1$ darf kein Agent einen schlechteren Deal machen als der in der vorigen Runde
 			\item Wenn nach einigen Runden keine Übereinkunft gefunden wird: Dann wird die Verhandlung mit dem Conflict-Deal beendet
 		\end{itemize}
-		\item Zeuthen Strategie ???
+		\item Zeuthen Strategie
 		\begin{itemize}
-			\item Verhandlung mit dem Ziel der Messung der Bereitschaft ein Risiko einzugehen
-			\item Höhere Bereitschaft, wenn der Unterschied zwischen dem aktuellen Vorschlag und dem Konfliktdeal gering ist
-			\item Erster Vorschlag: Der beste Deal eines Agenten
-			\item Jede Runde wird ein Agent riskieren
-			\item Agenten kommen sich nur soviel entgegen, bis das Risiko erreicht ist
+			\item \textbf{Was sollte der erste Vorschlag sein?} | der beste Deal aus Sicht des Agenten
+			\item \textbf{Welcher Agent sollte ein Zugeständnis machen?} | \begin{itemize}
+				\item Agent mit der kleinsten Risikobereitschaft bezüglich Konflikt (der, der am meisten bei einem Konflikt zu verlieren hat)
+				\item $r_i = \frac{\text{Nutzenminderung durch Zugeständnis}}{\text{Nutzenminderung durch Konflikt}} = \frac{u_i(d_i) - u_i(d_j)}{u_i(d_i)}$
+			\end{itemize}
+			\item \textbf{Wie groß sollte das Zugeständnis sein?} | gerade groß genug, so dass er beim nächsten Mal nicht der mit kleinster Risikobereitschaft ist
+			\item Die Zeuthen Strategie ist ein \textbf{Nash-Gleichgewicht}: Wenn ein Agent ihr folgt, kann der andere nicht besser handeln als ihr auch zu folgen.
 		\end{itemize}
 	\end{itemize}
 	\section{Trust and Reputation}
