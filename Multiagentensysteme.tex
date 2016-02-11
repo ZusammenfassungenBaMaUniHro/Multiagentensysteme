@@ -814,14 +814,12 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item ??? Wie detailliert ???
 	\end{itemize}
 	\subsubsection{Dimensionen von Reputation}
-	Aus: \url{http://www.iiia.csic.es/~sierra/articles/2001/reputation.pdf}
+	Aus: \url{http://www.iiia.csic.es/~sierra/articles/2001/reputation.pdf} und \url{http://www.iiia.csic.es/files/pdfs/591.pdf}
 	\begin{description}
 		\item[Ontological Dimension]| Statt einer Reputation gibt es mehrere Arten von Reputation, welch untereinander kombiniert sein können. 
 		\emph{For example, the reputation of being a good flying company summarizes the reputation of having good planes, the reputation of never losing luggage and the reputation of serving good food.
 		In turn, the reputation of having good planes is a summary of the reputation of having a good maintenance service and the reputation of frequently renewing the fleet.
 		The different types of reputation and how they are combined to obtain new types is what we call the	ontological  dimension of reputation.}
-		\item[Individual Dimension]| Reputation aus eigener Interaktion mit einem Individuum.
-		\item[Social Dimension]| Reputation durch andere Individuen, welche aus derselben Gruppe stammen, wie man selbst und mit dem Individuum interagiert haben.
 	\end{description}
 	\subsubsection{Outcomes}
 	\begin{itemize}
@@ -837,6 +835,33 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item $IDB^a_p \subseteq IDB^a$ ist eine mit $p$ gefilterte Teilmenge von $IDB^a$
 		$p$ kann dabei beispielsweise $(a,b,PRICE,\_,\_)$ sein, für alle Impressionen mit $b$ über den Preis.
 	\end{itemize}
+	\subsubsection{Individual Reputation}
+		\begin{itemize}
+			\item Reputation, die aus den direkten Impressionen der IDB eines Agenten errechnet wird.
+			\item Subjektive Reputation aus Sicht des Agenten $a$ zum Zeitpunkt $t$ in Bezug auf Filter $p$: $R^t(IDB^a_p) = \sum_{\iota_i \in IDB^a_p} \rho(t,t_i)\cdot W_i$, mit $\rho(t,t_i) = \frac{f(t_i,t)}{\sum_{\iota_i \in IDB^a_p}f(t_i,t)}$ ist eine Normalisierungsfunktion und  $f(t_i,t)$ ist eine zeitabhängige Funktion, die höhere Werte ergibt, wenn $t_i$ nah an $t$ liegt $\Rightarrow R^t(IDB^a_p) \in [-1,1]$
+			\item $R^t(IDB^a_{(a,b,\_,subject,\_,\_)})$ wir als $R_{a\rightarrow b}(subject)$ zum aktuellen Zeitpunkt bezeichnet.
+			Dies bezeichnet die \textbf{Individuelle Reputation} 
+			\item \textbf{Verlässlichkeit der Reputation} abhängig von mehreren Elementen, z.B. Anzahl der Impressionen und der Streuung der Impressionen. (Weitere Stichpunkte hierzu ausgelassen)
+		\end{itemize}
+		\subsubsection{Fucking Social Dimension}
+		\begin{itemize}
+			\item Reputation durch andere Individuen, welche aus derselben Gruppe stammen, wie man selbst und mit dem Individuum interagiert haben.
+			Existieren keine eigene Impressionen, schaffen diese oft die ersten Erwartungen
+			\item Ultrakurzfassung: Soziale Reputation von Agent $b$ aus Sicht von Agent $a$, beeinflusst durch die eigene Gruppe $\mathcal{A}$ ist die gewichtete Summe von
+				\begin{itemize}
+					\item Individueller Reputation von $b$ aus Sicht von $a$
+					\item Individueller Reputation der Gruppe $\mathcal{B}$ aus Sicht von $a$.
+					\item Reputation von $b$ aus Sicht der Mitglieder der Gruppe $\mathcal{A}$
+					\item Reputation der Gruppe $\mathcal{B}$ aus Sicht der Mitglieder von Gruppe $\mathcal{B}$
+				\end{itemize}
+		\end{itemize}
+		\begin{align*}
+			SR_{a\rightarrow b} (subject) = & \zeta_{ab} \cdot R_{a\rightarrow b}(subject) + \\
+			& \zeta_{a\mathcal{B}} \cdot R_{a\rightarrow \mathcal{B}}(subject) + \\
+			& \zeta_{\mathcal{A}b} \cdot R_{\mathcal{A}\rightarrow b}(subject) + \\
+			& \zeta_{\mathcal{A}\mathcal{B}} \cdot R_{\mathcal{A}\rightarrow \mathcal{B}}(subject)\\
+			\text{where } & \zeta_{ab} + \zeta_{a\mathcal{B}} + \zeta_{\mathcal{A}b} + \zeta_{\mathcal{A}\mathcal{B}} = 1
+		\end{align*}
 	\section{Blackboard}
 	\subsection{Allgemein}
 	\begin{itemize}
