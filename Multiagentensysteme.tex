@@ -789,7 +789,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Einführung}
 	\begin{itemize}
 		\item Trust: Der Glaube, dass ein anderer Agent eine Aktion tun wird, ohne dass explizite Garantien vergeben werden, um ein Ziel in einer riskanten Situation zu erreichen.
-		\item Reputation: Was andere Agenten bezüglich seines Verhaltens sagen
+		\item Reputation: Was andere Agenten bezüglich seines Verhaltens sagen; \emph{opinion  or  view  of  one about  something}
 		\item Reputation erlaubt die Bildung von Trust und hat so eine soziale Komponente, die nicht nur für einen Agenten sondern für alle nützlich ist.
 		\item Jeder Agent wird durch andere Agenten beobachtet, keine zentrale Autorität
 		\item Subjective vs. Globale Reputation
@@ -812,6 +812,30 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Outcome: Initialer Vertrag + Realisierung des Partners (Attribute: Lieferungstag, Kosten, Qualität, Quantität)
 		\item Impression: Subjekte Auswertung des Outcomes
 		\item ??? Wie detailliert ???
+	\end{itemize}
+	\subsubsection{Dimensionen von Reputation}
+	Aus: \url{http://www.iiia.csic.es/~sierra/articles/2001/reputation.pdf}
+	\begin{description}
+		\item[Ontological Dimension]| Statt einer Reputation gibt es mehrere Arten von Reputation, welch untereinander kombiniert sein können. 
+		\emph{For example, the reputation of being a good flying company summarizes the reputation of having good planes, the reputation of never losing luggage and the reputation of serving good food.
+		In turn, the reputation of having good planes is a summary of the reputation of having a good maintenance service and the reputation of frequently renewing the fleet.
+		The different types of reputation and how they are combined to obtain new types is what we call the	ontological  dimension of reputation.}
+		\item[Individual Dimension]| Reputation aus eigener Interaktion mit einem Individuum.
+		\item[Social Dimension]| Reputation durch andere Individuen, welche aus derselben Gruppe stammen, wie man selbst und mit dem Individuum interagiert haben.
+	\end{description}
+	\subsubsection{Outcomes}
+	\begin{itemize}
+		\item Unter dem \textbf{Outcome} $O$ einer Interaktion zweier Agenten versteht man eine Vereinbarung (\emph{Contract}) und das tatsächliche Ergebnis einer Transaktion.
+		\item Es wird zwischen gemeinsamen vereinbarten (\emph{common}) und erwarteten (\emph{expected}) Variablen unterschieden.
+		Während erstere beiden Parteien bekannt sind (z.B. vereinbarter Preis), werden letztere implizit von einer Partei angenommen(z.B. Erwartungen zur Qualität.)
+		Letztere sind daher auch \emph{subjektiv}.
+	\end{itemize}
+	\subsubsection{Impressions}
+	\begin{itemize}
+		\item Ein Eindruck $\iota$ (\emph{Impression}) ist eine subjektive Evaluation eines Agenten $a$ über ein Outcome $o$ mit Agent $b$, wobei eine Variable $\phi$ zu einem Zeitpunkt $t$ mit einer subjektiven Bewertung $W = [-1,1]$ versehen wird: $\iota = (a,b,o,\phi,t,W)$
+		\item $IDB^a$ ist die Impressionsdatenbank, welche alle Impressionen von Agent $a$ beinhaltet. 
+		\item $IDB^a_p \subseteq IDB^a$ ist eine mit $p$ gefilterte Teilmenge von $IDB^a$
+		$p$ kann dabei beispielsweise $(a,b,PRICE,\_,\_)$ sein, für alle Impressionen mit $b$ über den Preis.
 	\end{itemize}
 	\section{Blackboard}
 	\subsection{Allgemein}
