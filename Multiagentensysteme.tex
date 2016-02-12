@@ -804,20 +804,71 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Beispiel: Regret System
 	\end{itemize}
 	\subsection{Regret System}
-	Beschrieben in:
-	\begin{itemize}
-		\item \url{http://www.iiia.csic.es/~sierra/articles/2001/reputation.pdf}
-		\item \url{http://www.iiia.csic.es/files/pdfs/591.pdf}
-	\end{itemize}
 	\begin{center}
 		\includegraphics[scale=0.3]{img/regret.png}
 	\end{center}
 	\begin{itemize}
 		\item Modulares Trust und Reputations-System für komplexe E-Commerce Umgebungen, in denen soziale Relationen zwischen den Teilnehmern eine wichtige Rolle spielen
-		\item Outcome: Initialer Vertrag + Realisierung des Partners (Attribute: Lieferungstag, Kosten, Qualität, Quantität)
-		\item Impression: Subjekte Auswertung des Outcomes
-		\item ??? Wie detailliert ???
+		\item Die Folien und die beiden Papers beschreiben die Ansätze teilweise ziemlich unterschiedlich und widersprechen sich zum Teil sogar:
+		\begin{itemize}
+				\item Anschauliches Paper: \url{http://www.iiia.csic.es/files/pdfs/591.pdf}
+				\item Mathematisches Paper:  \url{http://www.iiia.csic.es/~sierra/articles/2001/reputation.pdf}
+		\end{itemize}
+	
+		\item Agenten stehen in Relationen zueinander, z.B.
+		\begin{description}
+			\item[Competition]| Agenten verfolgen dasselbe Ziel und benötigen gleiche Ressourcen.
+			Es wird versucht, gegenüber dem Anderen einen Vorteil zu gewinnen, beispielsweise durch Lügen oder das Verstecken von Informationen.
+			\item[Cooperation]| Agenten haben das Interesse, zusammenzuarbeiten.
+			Daher wird oft angenommen, dass der Andere vertrauenswürdig ist.
+			Schließt sich mit \emph{Competition} aus
+			\item[Trade]| Es existieren kommerzielle Transaktionen.
+			Kompatibel mit \emph{Competition} und \emph{Cooperation}
+		\end{description}
+		\item Jeder Agent kennt zu jeder Relation ein \textbf{Soziogramm}, also einen gewichteten Graphen mit Agenten als Knoten und Kanten, wenn eine entsprechende Beziehung besteht.
+		Die Gewichte der Kanten geben an, wie stark die jeweilige Relation (vermutlich) ausgeprägt ist ($w\in [0,1]$).
+		\item \textbf{Kernkonzept:} Regret unterscheidet bei der Reputation zwischen der \textbf{Individuellen Dimension}, der \textbf{sozialen Dimension} und der \textbf{ontologischen Dimension}.
 	\end{itemize}
+	\subsubsection{Ontologische Dimension}
+	Statt \emph{der} Reputation eines Agenten, gibt es mehrere Typen der Reputation.
+	So kann ein Agent die Reputation haben, ein \emph{Schwindler} zu sein oder \emph{häufig die Qualitätsansprüche zu übertreffen}. 
+	Diese Typen können auch zusammengesetzt sein.
+	Ein Agent, der \emph{nicht zahlt} fällt ebenso in die Kategorie \emph{Schwindler}, wie einer der \emph{nicht liefert, obwohl er bezahlt wurde}.
+	\subsubsection{Individuelle Dimension}
+	\begin{itemize}
+		\item Modelliert die Reputation aus der direkten Interaktion zwischen zwei Agenten.
+		Dies ist die beste Methode, um eine Reputation zu einem anderen Agenten zu berechnen, ist jedoch nicht immer möglich, wenn keine oder nicht genügend Interaktionen stattgefunden haben.
+		\item Beide Papers scheinen unterschiedliche Ansichten zu haben, wie man auf die individuelle Reputation kommt.
+		\item Agenten speichern \textbf{Outcomes}, also Paare von Verträgen und den dazugehörigen tatsächlichen Ergebnissen in einer \textbf{Outcome Database (ODB)}.
+		\item Outcomes werden vom Agenten bezüglich bestimmter Eigenschaften (z.B. Lieferzeit eingehalten, Qualitätsansprüche erfüllt etc.) bewertet.
+		Beide Paper beschreiben hierfür unterschiedliche Ansätze(Impressions, Issues und Grounding Relation).
+		\textbf{Hinweis}: Die im \emph{mathematischen Paper} genutzte \textbf{Impression Database (IDB)} steht im Widerspruch zur IDB in der Grafik aus den Folien!
+		\item Die Reputation eines Agenten bezüglich bestimmter Eigenschaften ist (vereinfacht) die Summe der relevanten Bewertungen von Outcomes.
+		\item Die \textbf{Verlässlichkeit} dieser Reputation ist Abhängig von der \emph{Anzahl} und der \emph{Streuung} der individuellen Erfahrungen.
+	\end{itemize}
+	\subsubsection{Social Dimension}
+	\begin{itemize}
+		\item Wenn keine (oder nicht genügend) eigene Erfahrungen verfügbar sind, um eine Reputation zu einem Agenten zu berechnen, muss das soziale Umfeld befragt werden.
+		Da dieses sehr groß sein kann, muss eine Teilmenge aller Agenten ermittelt werden, die befragt wird. Kurzfassung:
+		\begin{description}
+			\item[Witness Reputation]| Befragen von Agenten, die idealerweise schon Kontakt mit dem Agenten hatten und damit schon eine Reputation über diesen kennen.
+			\begin{itemize}
+				\item Zeugen können lügen oder Informationen auslassen, um dem anfragenden Agenten zu schaden oder den Zielagenten zu schützen.
+				\item Weiterhin tritt \emph{correlated evidence} auf, weil Agenten aufgrund derselben Ereignisse bewerten und sich gegenseitig beeinflussen.
+				\item Es müssen weiterhin nicht alle Zeugen befragt werden.
+				Ein vorgeschlagener (stark vereinfachter) Algorithmus zum Finden von geeigneten Zeugen nimmt ein Soziogramm aller Zeugen, identifiziert die zusammenhängenden Komponenten und wählt aus diesen jeweils die Cut-Points (Knoten, deren Wegnahme die Komponentenzahl erhöht) und, wenn in einer Komponente keine Cut-Points vorhanden sind, die Knoten mit der höchsten Gradzahl (Central Points).
+				\item Das Vertrauen in den Zeugen spielt eine Rolle und muss ermittelt werden.
+				Hierbei gibt es \textbf{social trust} und \textbf{outcome trust reputation}.
+				\begin{itemize}
+					\item Beim social trust werden die Beziehungen zwischen anfragenden Agenten, Ziel und Zeuge betrachtet und anhand von Fuzzy-Logik bewerter: \texttt{IF $coop(w_i,b)$ is high THEN socialTrust is very\_bad}
+					\item Die bessere Alternative, sofern möglich, ist die Bewertung des Zeugen anhand eigener Outcomes mit diesem.
+				\end{itemize}
+			\end{itemize}
+			\item[Neighbourhood Reputation]| ?
+			\item[System Reputation]| Standardwert anhand der Rolle des Agenten, Vorurteile (z.B. \emph{Studenten kommen zu spät})
+		\end{description}
+	\end{itemize}
+	
 	\section{Blackboard}
 	\subsection{Allgemein}
 	\begin{itemize}
