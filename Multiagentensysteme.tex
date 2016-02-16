@@ -870,37 +870,30 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	
 	\section{Blackboard}
-	\subsection{Allgemein}
-	\begin{itemize}
-		\item Indirekte Kommunikation, d.h. keine direkte Kommunikation zwischen den Agenten sondern über ein Medium
-		\item Kommunikation durch Schreiben der Information auf ein Blackboard (zentraler Datenspeicher)
-		\item Agenten können partielle Lösungen für das Problem dort veröffentlichen
-		\item Zentrale Datenstruktur ist Flaschenhals und muss ggf. über irgendwelche Hierarchien verfügen
-		\item Subscripe-notify Pattern: Agent bekundet Interesse an  bestimmen Ereignissen, wenn ein Ereignis eintritt, wird der Agent benachrichtigt (proaktiv)
-		\item Annahmen: verschiedene Agenten greifen asynchron auf die Datenstruktur zu; ????
-		\item Wissensquelle: Agent drückt ein Teil der Lösung aus; ???
-		\item (??? IRG WAS MIT PRECONDITIONS ???)
-		\item Verschiedene Hierarchien für Tests (??? PRECONDITIONS ???)
-%TODO Wofür steht WQ?
-		\item Modularität: Man kann einzelne WQ des Systems entwickeln, ohne zu wissen welche anderen WQ es gibt (also indirekte Kommunikation)
-		\item Interessant: Wie verändert sich die Systemleistung durch Austausch einzelner WQ?
-		\item Kommunikation:
-		\begin{enumerate}
-			\item Sammlung von Daten über Events für zukünftige Anwendung
-			\item Detektion von Ereignissen, die vorigen Annahmen widersprechen (???)
-		\end{enumerate}
-		\item Lokale Kontexte: Jeder hat ein eigenes lokalen Abbild der Datenbank, die von Interesse ist, Übertragung neuer Events an entsprechende Interessierte
-		\item (??? Folie übersprungen zu Integrität ???)
-		\item Jeder Agent hat eine eigene Datenbank, Verteilung der Information über Blackboard; lokale Datenbanken bilden zusammen eine globale Datenbank
-	\end{itemize}
-	\subsection{Alternative Architekturen}
-	\begin{itemize}
-		\item Beispiel: Speech Understanding,
-		\item Ansatz 1: Pipe-and-Filter Architektur; Problem: keine klare Trennung, ggf Wissen aus unterschiedlichen Quellen notwendig d.h. Architektur wird unnötige komplex
-		\item Ansatz 2: Object-Orientierte-Architektur; Problem: nicht flexibel da jede WQ wissen muss, was eine andere WQ produzieren kann; Lösung: Client-Broker Ansatz aber recht komplex
-		\item Ansatz 3: Sichten-System; Problem: 
-		\item Besser: Alle Prozesse kommunizieren über Blackboard, Ziel: Wissensverteilung der Partiellen Lösungen
-	\end{itemize}
+	\subsection{Die Blackboard Metapher}
+	Steht so nicht in den Folien, jedoch in der Zusammenfassung der Folien und sollte ausreichend sein, um die Grundidee ausführlicher zu beschreiben.
+	Ein \textbf{Blackboardsystem} ist durch drei Hauptkomponenten charakterisiert:
+	Eine Gruppe von Experten (\textbf{Knowledge Sources | KS}), einer gemeinsam verwendeten Tafel mit (teilweise gelösten) Problemen (\textbf{Blackboard | BB}) und einem Moderator (\textbf{Controller | C}).
+	 
+	Die KS sollen ein definiertes Problem lösen.
+	Dazu suchen sie die Tafel nach für sie lösbaren Problemen ab, lösen diese und schreiben die Lösung an die Tafel.
+	Corkill beschreibt folgende Charakteristiken:
+	\begin{description}
+		\item[Independence of expertise] (I think, therefore I am.) | KS arbeiten eigenständig und sind daher voneinander unabhängig.
+		\item[Diversity in problem-solving techniques] (I don’t think like you do.) | KS sind Spezialisten auf ihren Gebieten.
+		Das Problem wird in verschiedene Fachgebiete unterteilt (z.B. Fahrzeugbau $\rightarrow$ Maschinenbauingenieure, Elektroingenieure....) und die KS sollten entsprechend gewählt sein.
+		\item[Flexible representation of blackboard information] (If you can draw it, I can use it.) 
+		\item[Common interaction language] (What’d you say?) | Gemeinsame Sprache ist verfügbar, was ein KS auf das BB schreibt, kann von einem anderen KS verstanden werden.
+		Mitunter kann es vorkommen, dass eine Sprache nur von einer Teilmenge von KS verstanden wird.
+		\item[Positioning metrics] (You could look it up.) | Inhalt des BB kann von den KS effizient erfasst werden.
+		So können etwa Bereiche des BB thematisch aufgeteilt sein, sodass eine KS nur einen bestimmten Bereich beobachten muss.
+		\item[Event-based activation] (Is anybody there?) | KS können Ereignisse (sowohl auf BB, als auch extern) wahrnehmen und darauf reagieren.	
+		\item[Need for control] (It’s my turn.) | Es wird eine Kontrollinstanz C benötigt.
+		Diese lenkt die Aktionen der KS, damit das Ziel letztendlich erreicht werden kann.
+		\item[Incremental solution generation] (Step by step, inch by inch...) | KS nehmen ein Problem vom BB, lösen es und schreiben die Lösung auf das BB zurück.
+		Die Lösung wird von anderen KS als Input verwendet.
+		So wird die Lösung an der Tafel inkrementell verbessert, bis letztendlich die Lösung des großen Problems an der Tafel steht.
+	\end{description}
 	\section{Organisationskontrolle}
 	\subsection{Allgemein}
 	\begin{itemize}
