@@ -870,6 +870,11 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	
 	\section{Blackboard}
+	Hilfreiche Papers: 
+	\begin{itemize}
+		\item \url{http://mas.cs.umass.edu/pub/paper_detail.php/218} (im Skript angegeben)
+		\item \url{http://www.aaai.org/ojs/index.php/aimagazine/article/view/537} (yay, Koalas!)
+	\end{itemize}
 	\subsection{Die Blackboard Metapher}
 	Steht so nicht in den Folien, jedoch in der Zusammenfassung der Folien und sollte ausreichend sein, um die Grundidee ausführlicher zu beschreiben.
 	Ein \textbf{Blackboardsystem} ist durch drei Hauptkomponenten charakterisiert:
@@ -893,6 +898,17 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item[Incremental solution generation] (Step by step, inch by inch...) | KS nehmen ein Problem vom BB, lösen es und schreiben die Lösung auf das BB zurück.
 		Die Lösung wird von anderen KS als Input verwendet.
 		So wird die Lösung an der Tafel inkrementell verbessert, bis letztendlich die Lösung des großen Problems an der Tafel steht.
+	\end{description}
+	\subsection{Model of Problem Solving}
+	\begin{description}
+		\item[Knowledge Sources] Unabhängige Systeme zum Lösen von Problemen aus bestimmten Domänen.
+		Verstehen den aktuellen Zustand im Problem-Lösungsprozess und die relevanten Informationen am BB.
+		Kennen außerdem die Vorbedingungen für ihre möglichen Aktionen (\emph{Was muss an der Tafel stehen, damit ich aktiv werden kann?})
+		\item[Blackboard] Globale Datenstruktur, die für alle KS verfügbar ist.
+		Auf ihr werden Rohdaten, Teillösungen, Alternativen, Endlösungen uns Steuerinformationen festgehalten.
+		Dadurch ermöglicht das BB Kommunikation und Aktivierung von KS.
+		Kann einen Flaschenhals darstellten.
+		\item[Control Component] Entscheidet, welche KS auf Veränderungen auf dem BB reagieren dürfen und lenkt so die Lösungsfindung.
 	\end{description}
 	\section{Organisationskontrolle}
 	\subsection{Allgemein}
