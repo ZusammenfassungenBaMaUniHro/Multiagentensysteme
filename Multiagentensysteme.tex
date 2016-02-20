@@ -919,7 +919,33 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Framework für die Skalierung der Aufgaben
 		\item Ziel: Wissen lokal zu halten, damit nicht zusätzlicher Aufwand durch Verwaltung fremden Wissens entsteht
 		\item Organisations Tradeoff
+		\item Die Rollenzuteilung zur Steigerung der Effizienz kann von der Natur abgeschaut werden. Bspw. das Flugkonzept von Vögeln $\rightarrow$ Arbeitslastverteilung
 	\end{itemize}
+	\subsection{Selbstorganisierende Rollenänderungen}
+		\begin{itemize}
+		\item Beim Senken-organisierten Verfahren pollt die Senke regelmäßig die Knoten und übernimmt die Zuweisung von Aufgaben
+		\item Bei der Selbstorganisation benachrichtigt ein Knoten den Clusterhead, sobald sein Energielevel unter einen bestimmten Wert gefallen ist. Dieser verteilt anschließend die Aufgabe an Knoten mit einem höheren Energielevel.
+		\item Ergebnis: Erhöhrung der Lebenserwartung um 40\%\\
+		(Limitierte Faktoren sind Senden, Messen und Rechnen)
+			\end{itemize}
+	\subsection{Kontrolle von Distributed Sensor Networks)}
+		\begin{itemize}
+		\item Wenn bei vielen Sensoren/Agenten keine Organisation dahintersteht, dann kann viel via Broadcasts gesendet werden; Wer entscheidet, ob ein Ziel neu ist?; Wer verfolgt das Ziel? $\rightarrow$ Diese Entscheidungen können zwar individuell getroffen werden, sind aber durch eine globale Organisation einfacher.
+		\item Rollenzuteilung der Knoten: Sensor, Sector-Manager, Track Manager
+		\item Die Umgebung wird in Sektoren eingeteilt und je Sektor wird ein Sektor-Manager bestimmt. Die anderen Knoten eines Sektors senden ihre Kapazitäten an den Sektor-Manager, der daraufhin Scan-Pläne entwickelt.
+		\item Knoten die für das Scannen eingeplant sind, machen selbiges und teilen dem Sektor-Manager Beobachtungen mit. Es wird ein Track-Manager bestimmt.
+		\item Die Aufgabe des Track-Manager ist es die Tracking-Nodes zu finden und zu koordinieren. Es kann hierbei zu Konflikten mit anderen Aufgaben kommen. Der Track-Manager sollte ab einem bestimmten Punkt in einen anderen Sektor migrieren.
+		\end{itemize}
+	\subsection{Content-Based Hierarchical Agent Organizations}
+		\begin{itemize}
+		\item Agenten mit ähnlichem Inhalt werden gruppiert. Dabei ist die Größe der zu durchsuchenden Teilgruppen limitiert. Es werden Querverweise gesetzt, um schnell Inhalt zu finden.
+		\item Die Organisation vergrößert sich inkrementell, wenn neue Agenten joinen.
+		\item Die Suche läuft in 2 Phasen ab: Cluster mit gesuchten Inhalt lokalisieren $\rightarrow$ Cluster durchsuchen
+		\end{itemize}
+	\subsection{Lane-Protokoll}
+		\begin{center}
+		\includegraphics[scale=0.5]{img/lane.png}
+		\end{center}
 	\section{Agenten und Mobilität}	
 	\begin{itemize}
 		\item Rückblick - Gebiete zusammengefasst
