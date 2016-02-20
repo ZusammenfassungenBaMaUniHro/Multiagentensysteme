@@ -920,11 +920,18 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 		\item Ziel: Wissen lokal zu halten, damit nicht zusätzlicher Aufwand durch Verwaltung fremden Wissens entsteht
 		\item Organisations Tradeoff
 	\end{itemize}
-	\section{Agenten und Mobilität}
+	\section{Agenten und Mobilität}	
 	\begin{itemize}
+		\item Rückblick - Gebiete zusammengefasst
+			\begin{itemize}
+			\item KI (Planung, Kommunikation, Wissen, Logik)
+			\item Soziologie (Wie Menschen sich verhalten)
+			\item \textbf{Jetzt:} Verteilte Systeme (unabhängig, own Thread of Computiation, Garbage Collection in MAS nicht möglich, distributed Location)
+			\end{itemize}			
 		\item Verteilte Orte: Wie können diese miteinander reden?
 		\item Verteilte Systeme: verschiedene Möglichkeiten um Methoden von anderen Koten (Remote Procedure Call) aufzurufen
 		\item Lösungen: Stub, Skeleton. Marshalling (Serialisierung von Objekten), IDL
+		\item Marshalling: Serialisieren, sodass darauf referenziert werden kann
 		\item Stub hat Referenz zu Skeleton-Methodes
 		\item Probleme: 
 		\begin{itemize}
@@ -932,11 +939,24 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Verbindung kann nicht sicher sein (fällt ggf aus), Implementierung von Timeouts usw (unreliable links)
 			\item Übertragung von großen Daten kann ein Problem sein. Es ist besser, wenn der Server Berechnungen mit Daten vornimmt - ohne zu verschicken ABER möglicherweise kennt der Server den Algorithmus nicht (Lösung: Mobile Agents)
 		\end{itemize}
-		\item Agenten-basierter Ansatz: Alternative zu RPC ist RP
+		\item Agenten-basierter Ansatz: Alternative zu RPC ist RP (remote programming). Der Client macht hierfür Methoden und Klassen verfügbar. Die Methode wird zusammen mit dem Zustand des Agenten auf dem Server ausgeführt. (?)
 		\item Client macht Code für Prozeduren und Klassen bekannt
 		\item Prozedur + Aktuellen Zustand präsentiert einen Mobiler Agent
-		\item Weak migration: ? (standard)
-		\item Strong migration: ?
+		\item Weak migration: ist heutzutage Standard\\
+		(Code\&Date werden migriert. Es ist notwendig einen Startpunkt zu definieren und es ist komplizierter damit zu arbeiten)
+		\item Strong migration\\
+		(Code\&Data\&State(Programming Stack) Das Programm kehrt zu einem Interrupt-Point zurück. Da ein Agentenzustand groß sein kann, ist dies ein langsamer und teurer Prozess)
+	
 		\item Remote Programming: Konventionen zwischen Client und Server für Befehle und Datentypen bilden eine Sprache
+		\item Vorteile von mobilen Agenten: Reduzierung der Netzwerklast, Offline-Ausführung von Agenten möglich, Höhere Clientflexibilität, Bessere Lastverteilung bei Berechnungen
+		\item Notwendige Infrastruktur: transportierbare Sprache in der die Agenten entwickelt wurden (Java), Interpreter, Kommunikation zum Agentenaustausch, Agenten
+		\item \textbf{Gründe für Java:} Plattformunabhängigkeit, Mechanismus zum Laden von Klassen, Multi-Threading, Serialisierung, RMI, Reflektion \textbf{ABER} keine strong migration
+		\item Migration darf nicht im Selbstmord enden: Daher wird ein "`Shadow"' hinterlassen. Außerdem müssen Nachrichten an die neue Position weitergeleitet werden (neue Location wird in der alten gespeichert). Erst nach erfolgreichen Migration wird das alte Objekt gelöscht, im Fehlerfall wird es re-installiert		
+		\item Agenten können reflektieren, wer sie zu was auffordert - Objekte können das nicht
+		\item Agenten müssen selbstständig festlegen, wann sie garbage collected werden können.
+		\item Sicherheitsaspekte -> Authentizität (Spoofing), Integrität(Veränderungen), DOS, ...\\
+		$\rightarrow$ Authentifikation (User, Host, Agent, Code), Access Control, Vertraulichkeit
+		\item Hostsicherung: Safe Code Interpretation (interpretierte Sprachen), Authentifizierung, Authorisierung, Ressourcen Allocation, Path-History
+		\item Mobile-Agenten-Sicherung: safe Environment, Signaturen, shared Secret
 	\end{itemize}
 \end{document}
