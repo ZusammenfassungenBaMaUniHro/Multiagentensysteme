@@ -492,6 +492,73 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 
 \section{Anwendung des Prisonersdilemma: Sensornetzwerk Beispiel}
+\subsection{Wireless Sensor Networks}
+WSN sind Netzwerke aus kleinen, batteriebetriebenen Geräten.
+Die Knoten bestehen aus folgenden \textbf{Komponenten}:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Low-power Prozessor
+		\item Begrenzter Speicher
+		\item Funk (geringe Reichweite + Datenrate)
+		\item Sensoren
+		\item Stromquelle (Batterie)
+	\end{itemize}
+\end{multicols}
+Welche \textbf{Motivation} und \textbf{Anwendung} für WSN gibt es?
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Übergang vom PC in die reale Welt
+		\item \emph{No configuration}
+		\item Große Anzahl von Sensoren in einer großen Umgebung
+		\item Verteiltes \emph{sensing} mittels \textbf{Wireless Sensing} und \textbf{Data Networking}
+		\item Waldbrandüberwachung, Fahrzeugüberwachung, Flutkontrolle, etc...
+	\end{itemize}
+\end{multicols}
+Vor welche \textbf{Herausforderungen} wird man gestellt?
+\begin{itemize}
+		\item Sensoren in Bezug auf Energie und Kommunikation stark eingeschränkt
+		\item Anwendungsfälle setzen gewisse Ansprüche an \textbf{Latenz}, \textbf{Datendurchsatz}, \textbf{Lebenszeit}, welche mit \textbf{Netzwerkkapazität} und \textbf{Energiehaushalt} in Konflikt geraten
+\end{itemize}
+$\Rightarrow$ Nutzung von z.B. S-MAC
+\subsection{Sensor Medium Acces Protocol (S-MAC)}
+Stellt die drei Hauptfeatures (siehe Teilüberschriften)
+\subsubsection{Periodisches Zuhören und Schlafen}
+\begin{itemize}
+	\item Knoten sparen Energie, indem sie nicht dauerhaft aktiv sind, Verhalten ist abhängig von anwendungsabhängigem \textbf{Schedule}.
+	\item Schedules werden mit Nachbarn \textbf{synchronisiert}, damit Kommunikation stattfinden kann (sofern nötig).
+	Knoten lernen die Schedules ihrer Nachbarn.
+	\item Initial lauscht ein Knoten, ob er einen Schedule erhält.
+	Ist dies nicht der Fall, wählt er einen (zufälligen) Schedule und broadcasted ihn (\textbf{Synchronizer})
+	\item Erhält er einen Schedule vom Nachbarn, so verfolgt er diesen und broadcasted ihn nach einer zufälligen Zeit. (\textbf{Follower})
+	\item Hat ein Knoten bereits einen eigenen Schedule und erhält einen weiteren, so wacht er nach seinem eigenen und dem Nachbarschedule auf.
+	Schedule wird vor dem Schlafen gebroadcasted.
+	\item Uhren müssen regelmäßig synchronisiert werden (Periodisches \texttt{SYNC}-Paket)
+\end{itemize}
+\subsubsection{Kollisions- und Abhör(?)vermeidung}
+\begin{itemize}
+	\item Collision Avoidance mittels Ready-to-Send/Clear-to-Send (RTS/CTS), wie bei WLAN (802.11)
+	\item \textbf{Kommunikationsschema:} $\Rightarrow$ \texttt{RTS}, $\Leftarrow$ \texttt{CTS}, $\Rightarrow$ \texttt{<DATA>}, $\Leftarrow$ \texttt{ACK}
+	\item Übertragungsdauer wird immer im Voraus angekündigt, also haben andere Konten in der Zeit Funkstille
+\end{itemize}
+\subsubsection{Nachrichtenübermittlung}
+Nachrichten sind bedeutsame, zusammengehörige Einheiten von Daten.
+\textbf{Problem:}
+\begin{itemize}
+	\item Lange Nachrichten als einzelnes, großes Paket zu übermitteln verursacht hohe Kosten bei Paketverlust (re-transmission)
+	\item Fragmentierung in kleine Pakete bedeutet Overhead (RTS/CTS für jedes Paket)
+\end{itemize}
+Die Lösung ist die \textbf{Fragmentierung} der Nachricht in kleine Pakete und \textbf{Übertragung im Burst-Modus}.
+\begin{multicols}{2}
+	\textbf{Vorteile}
+	\begin{itemize}
+		\item Reduktion von Latenz
+		\item Reduktion von Overhead
+	\end{itemize}
+	\textbf{Nachteil}
+	\begin{itemize}
+		\item Knoten mit kleinen Nachrichten müssen warten, bis lange Nachrichten übermittelt sind.
+	\end{itemize}
+\end{multicols}
 \section{Agenten Kommunikation}
 	\subsection{Einführung}
 	\begin{itemize}
