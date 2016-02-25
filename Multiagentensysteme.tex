@@ -788,10 +788,11 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\section{Trust and Reputation}
 	\subsection{Einführung}
 	\begin{itemize}
-		\item Trust: Der Glaube, dass ein anderer Agent eine Aktion tun wird, ohne dass explizite Garantien vergeben werden, um ein Ziel in einer riskanten Situation zu erreichen.
-		\item Reputation: Was andere Agenten bezüglich seines Verhaltens sagen; \emph{opinion  or  view  of  one about  something}
-		\item Reputation erlaubt die Bildung von Trust und hat so eine soziale Komponente, die nicht nur für einen Agenten sondern für alle nützlich ist.
+		\item Trust: Der Glaube, dass ein anderer Agent eine Aktion tun wird, \textbf{ohne} dass \textbf{explizite Garantien} vergeben werden, um ein Ziel in einer riskanten Situation zu erreichen.
+		\item Reputation: Was andere Agenten bezüglich seines Verhaltens sagen; \emph{opinion  or  view  of  one about  something} $\rightarrow$ global.
+		\item Reputation erlaubt die Bildung von Trust und hat so eine soziale Komponente, die nicht nur für einen Agenten sondern für alle nützlich ist. Um Reputation aufzubauen ist Kommunikation notwendig und ähnlich wie Ontologien erleichtert diese den Alltag.
 		\item Jeder Agent wird durch andere Agenten beobachtet, keine zentrale Autorität
+		\item Trust und Reputationsmechanismen basieren auf den zwei Layern: Sicherheit (Integrität, etc.) und Institution (Organisationsaspekte wie Abläufe oder Protokolle)
 		\item Subjective vs. Globale Reputation
 		\begin{itemize}
 			\item Subjektiv: Jeder Agent hat eine eigene Vorstellung von der Reputation anderer Agenten
@@ -800,7 +801,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Nachteil global: Funktioniert nur unter der Annahme, dass alle Agenten denken und sich ähnlich verhalten, da interne Zustände des Agenten nicht berücksichtigt werden; Es ist nicht immer erwünscht, dass Agenten Information public machen oder diese an eine zentrale Verwaltungsstelle senden
 			\item Ein hoher Trust in die zentralen Organisation ist notwendig
 		\end{itemize}
-		\item Vgl. Ebay: komplett zentral, Käufer hinterlassen Kommentare + Bewertung nach Käufen, jeder Teilnehmer hat einen Wert als Summe der Bewertungen
+		\item Vgl. Ebay: komplett zentral, Käufer hinterlassen Kommentare + Bewertung nach Käufen, jeder Teilnehmer hat einen Wert als Summe der Bewertungen, viele Nutzer, einfacher Identitätenwechsel
 		\item Beispiel: Regret System
 	\end{itemize}
 	\subsection{Regret System}
@@ -809,6 +810,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{center}
 	\begin{itemize}
 		\item Modulares Trust und Reputations-System für komplexe E-Commerce Umgebungen, in denen soziale Relationen zwischen den Teilnehmern eine wichtige Rolle spielen
+		\item Es kann auch auf andere Eigenschaften als Trust/Reputation ankommen bspw. auf Aspekte wie Qualität oder schnelle Lieferung
 		\item Die Folien und die beiden Papers beschreiben die Ansätze teilweise ziemlich unterschiedlich und widersprechen sich zum Teil sogar:
 		\begin{itemize}
 				\item Anschauliches Paper: \url{http://www.iiia.csic.es/files/pdfs/591.pdf}
@@ -868,6 +870,11 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item[System Reputation]| Standardwert anhand der Rolle des Agenten, Vorurteile (z.B. \emph{Studenten kommen zu spät})
 		\end{description}
 	\end{itemize}
+	\subsection{Fuzzy-Logik}
+	Kommt dann ins Spiel, wenn etwas unscharf ist. Fuzzy Logik ist eine Theorie, welche vor allem für die Modellierung von Unsicherheit und Vagheit von umgangssprachlichen Beschreibungen entwickelt wurde. In der Vorlesung wurde als Beispiel die Einteilung in große bzw. kleine Körpergröße gemacht. Es ist unklar ab wann jemand groß ist und wann klein.\\
+	
+	Fuzzy Logik tritt dann auf, wenn eine Einschätzung unklar/verwischt/verschwommen/unbestimmt ist. \\
+	Gegenbeispiel: Tot oder lebendig
 	
 	\section{Blackboard}
 	Hilfreiche Papers: 
