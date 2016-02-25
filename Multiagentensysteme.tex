@@ -15,6 +15,7 @@
 \usepackage{tikz}
 \usepackage{sgame}
 \usepackage{multicol}
+\usepackage{wrapfig}
 \usepackage[labelformat=empty]{caption}
 
 \title{Zusammenfassung - Multi-Agenten-Systeme}
@@ -534,7 +535,7 @@ Stellt die drei Hauptfeatures (siehe Teilüberschriften)
 	Schedule wird vor dem Schlafen gebroadcasted.
 	\item Uhren müssen regelmäßig synchronisiert werden (Periodisches \texttt{SYNC}-Paket)
 \end{itemize}
-\subsubsection{Kollisions- und Abhör(?)vermeidung}
+\subsubsection{Kollisions- und Überhörvermeidung}
 \begin{itemize}
 	\item Collision Avoidance mittels Ready-to-Send/Clear-to-Send (RTS/CTS), wie bei WLAN (802.11)
 	\item \textbf{Kommunikationsschema:} $\Rightarrow$ \texttt{RTS}, $\Leftarrow$ \texttt{CTS}, $\Rightarrow$ \texttt{<DATA>}, $\Leftarrow$ \texttt{ACK}
@@ -559,6 +560,29 @@ Die Lösung ist die \textbf{Fragmentierung} der Nachricht in kleine Pakete und \
 		\item Knoten mit kleinen Nachrichten müssen warten, bis lange Nachrichten übermittelt sind.
 	\end{itemize}
 \end{multicols}
+\subsection{Win Stay Loose Shift Strategie}
+\begin{wrapfigure}{r}{0.5\textwidth}
+\includegraphics*[width=0.48\textwidth]{img/d-mac}
+\end{wrapfigure}
+
+\textbf{Ziel:} Weiterleiten sämtlicher Sensordaten an einen Basisknoten mit minimaler Ende-zu-Ende-Latenz.
+Folgende \textbf{Grundidee:}
+\begin{itemize}
+	\item Baumstruktur mit Sensoren als Knoten und Basisknoten als Wurzel, gerichtet zur Wurzel
+	\item Schedules sind so abgestimmt, dass ein Paket sofort weitergeleitet werden kann, sobald es von einem Knoten empfangen wurde
+	\item Ein Frame (Active-Sleep-Periode) wird in Slots aufgeteilt; ein \emph{Sende-Slot} ist mit dem \emph{Empfangen-Slot} des Nachfolgers abgestimmt.
+	\item Wenn dieser Stichpunkt hier nicht steht, wird die nachfolgende Überschrift hässlich umgebrochen.
+\end{itemize}
+
+\subsubsection{DEcentralized SYnchronization and DEsynchronization (DESYDE)}
+\begin{itemize}
+	\item Knoten sind Agenten, die ihre Nachrichten mit minimaler Latenz zur Senke (Basis) weiterleiten sollen.
+	\item \textbf{Mögliche Aktionen}: \texttt{Transmit}, \texttt{Listen} und \texttt{Sleep}, ausführbar in einem periodischen Frame, bestehend aus mehreren Slots (genau eine Aktivität pro Slot)
+	\item Für jede ausgeführte Aktivität gibt es Feedback von der Umgebung; \textbf{Mögliche Feedbacks} (Nutzen in Klammern): \texttt{Successful transmission} (1), \texttt{successful reception} (1), \texttt{overhearing} (0), \texttt{idle listening} (0), \texttt{unsuccessful transmission} (0) und \texttt{collision} (0)
+	\item \emph{Mathematische Definitionen zu Frame, Actions, Reward Signal und Expected Reward etc. ausgelassen}
+	\item Die Knoten lernen das dann \emph{irgendwie} innerhalb von 3-4 Frames.
+\end{itemize}
+\subsection{Reinforced Learning ?}
 \section{Agenten Kommunikation}
 	\subsection{Einführung}
 	\begin{itemize}
