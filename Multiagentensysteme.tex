@@ -880,8 +880,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	Ein \textbf{Blackboardsystem} ist durch drei Hauptkomponenten charakterisiert:
 	Eine Gruppe von Experten (\textbf{Knowledge Sources | KS}), einer gemeinsam verwendeten Tafel mit (teilweise gelösten) Problemen (\textbf{Blackboard | BB}) und einem Moderator (\textbf{Controller | C}).
 	 
-	Die KS sollen ein definiertes Problem lösen.
-	Dazu suchen sie die Tafel nach für sie lösbaren Problemen ab, lösen diese und schreiben die Lösung an die Tafel.
+	Es kann viele, unterschiedliche, unabhängige und asynchron arbeitende KS geben. Die KS sollen ein definiertes Problem lösen. Dazu suchen sie die Tafel nach für sie lösbaren Problemen ab, lösen diese und schreiben die Lösung an die Tafel.\\
 	Corkill beschreibt folgende Charakteristiken:
 	\begin{description}
 		\item[Independence of expertise] (I think, therefore I am.) | KS arbeiten eigenständig und sind daher voneinander unabhängig.
@@ -913,7 +912,69 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\subsection{Aus den Folien gekratztes Wissen}
 	\begin{itemize}
 		\item Kommunikation über ein gemeinsames Medium hatten wir vorher schon einmal: Ameisen
-		\item Schema zum kooperativen Problemlösen über eine gemeinsame Datenstruktur
+		\item Schema zum kooperativen Problemlösen über eine gemeinsame Datenstruktur\\
+		Im Gegensatz zur direkten Kommunikation via *casts und Protokolle, sind Blackboard-Systeme eine indirekte Kommunikationsform.
+		\item Merkmale
+			\begin{itemize}
+			\item BB können als Datenspeicher, Experten Systeme oder als Programmierumgebung genutzt werden
+			\item Agenten können auf dem BB Teillösungen schreiben/lesen, da es eine geteilte Datenstruktur ist. Es werden Teillösungen auf das BB geschrieben.
+			\item Da kein zeitgleicher Zugriff möglich ist, ist gegenseitiger Ausschluss notwendig.
+			\item Unnötige Datenduplikationen werden vermieden und es kann entschieden wer die Kontrolle über das BB hat.
+			\item Eine Kommunikation der KS (mit Hinblick auf Daten) erfolgt via BB.
+			\item Nachteil ist jedoch, dass das BB sich zu einem Flaschenhals entwickeln kann
+			\end{itemize}
+		\item Subscribe/Notify Pattern
+			\begin{itemize}
+			\item Um Ergebnisse mit anderen Agenten zu teilen wird dieses OO-Pattern verwendet.
+			\item Ein Objekt kann sich bei einem anderen anmelden, um über ein Ereignis informiert zu werden.
+			\end{itemize}
+		\item Grundsätzlich ist ein BB eine multidimensional Datenstruktur. Es ist aus Knoten aufgebaut, die wiederum Datenfelder beinhalten.
+		\item Die Kooperation erfolgt durch \textbf{Hypothese-und-Test}: Teillösungen sind die Hypothesen, die anschließend getestet werden.
+		\item Alternativen für das Problem
+			\begin{itemize}
+			\item Pipe and Filter
+				\begin{itemize}
+				\item Filter benötigen kein Wissen darüber, an was sie angebunden sind.
+				\item Sie können parallel laufen
+				\item Das Verhalten des Systems basiert auf dem Verhalten der einzelnen Filter
+				\end{itemize}
+			\item Direkte Kommunikation ist erheblich aufwändiger und führt zu:
+			\item Objektorientierte Architektur
+				\begin{itemize}
+				\item Interessante Eigenschaften: Data Hiding (Datenrepräsentation für Clients nicht einsehbar), Wahl zwischen single- und multi-threaded und Probleme lassen sich zerlegen und an eine Menge von Agenten delegieren
+				\item ABER miteinander agierende Objekte müssen sich gegenseitig kennen
+				\item Lässt sich verfeinern zu Client/Server/Brocker $\rightarrow$ Schnittstelle/Middleware
+				\end{itemize}
+			\item Layered System: Wenn die Struktur es zulässt. Durch verschiedene voneinander gelöste Layer, kann der Designprozess, die Wiederverwendung und weitere Verbesserungen unterstützt werden. Es können Interfaces standardisiert werden. Aber es können nicht immer klare Layer erkannt werden.
+			\item Event-Based
+				\begin{itemize}
+				\item Die Sender von Events müssen sich nicht damit auseinandersetzen, wer damit wie umgeht. Es ermöglicht eine einfachere Wiederverwendung und Weiterentwicklung des Systems - einfaches Hinzufügen von weiteren Agenten.
+				\item ABER: Die Komponenten haben keine Kontrolle über das Ordnen der Berechnungen.
+				\end{itemize}
+			\item Model View Controller: Es gibt ein zentrales Model und viele Views. Zu jedem View gehört ein Controller, der die Eingaben des Nutzers auf dem View an das Model updatet. Änderungen am Model werden an alle Views verteilt.
+			\end{itemize}
+		\item Hearsay II
+			\begin{itemize}
+			\item Eins der ersten akademischen BB-Systeme zur Spracherkennung. 
+			\item Da viele Team parallel zu einander gearbeitet haben, sollen diese partiellen Lösungen auf dem BB arbeiten und daraus eine globale Lösung generieren. So entwickelte sich ein umfangreiches System zur Spracherkennung.
+			\item Es ist kein Expertensystem, das alles kann - dafür die Subsysteme.
+			\end{itemize}
+		\item Sinnvolle Anwendung von BB
+			\begin{itemize}
+			\item Entkopplung: Bspw. Sensoren in einem Raum
+			\item Mehere Akteure in einer Welt: So können Bedingungen global gespeichert werden, wenn sie mehrere betreffen
+			\item Gut zur Koordination zwischen Agenten $\rightarrow$ NOLF2 Beispiel
+			\end{itemize}
+		\item Probleme von verteilten Netzwerken: Wie oft muss aktualisiert werden? Mit wie viel falschen Wissen kann noch gearbeitet werden?
+		\item Probleme bei der Koordination zwischen Agenten:
+			\begin{itemize}
+			\item Agenten machen Sachen gleichzeitig
+			\item Agenten machen Sachen zu oft
+			\item Spezielle Bedingungen für Taktiken
+			\item Agenten nehmen die gleichen Wege\\
+			\textit{Lösung: Rasterung/Einteilung des Gebietes. A erhöht Kosten, wo er langläuft und verhindert so dass B dort auch lang läuft.s}
+			\item Agents clump at destinations
+			\end{itemize}
 	\end{itemize}
 	\section{Organisationskontrolle}
 	\subsection{Allgemein}
