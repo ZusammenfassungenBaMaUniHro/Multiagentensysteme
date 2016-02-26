@@ -1190,9 +1190,26 @@ Folgende \textbf{Grundidee:}
 		\item Migration darf nicht im Selbstmord enden: Daher wird ein "`Shadow"' hinterlassen. Außerdem müssen Nachrichten an die neue Position weitergeleitet werden (neue Location wird in der alten gespeichert). Erst nach erfolgreichen Migration wird das alte Objekt gelöscht, im Fehlerfall wird es re-installiert		
 		\item Agenten können reflektieren, wer sie zu was auffordert - Objekte können das nicht
 		\item Agenten müssen selbstständig festlegen, wann sie garbage collected werden können.
-		\item Sicherheitsaspekte -> Authentizität (Spoofing), Integrität(Veränderungen), DOS, ...\\
-		$\rightarrow$ Authentifikation (User, Host, Agent, Code), Access Control, Vertraulichkeit
-		\item Hostsicherung: Safe Code Interpretation (interpretierte Sprachen), Authentifizierung, Authorisierung, Ressourcen Allocation, Path-History
-		\item Mobile-Agenten-Sicherung: safe Environment, Signaturen, shared Secret
+		\item Notwendige Mechanismen für mobile Agenten
+			\begin{itemize}
+				\item Transport: Agenten, Klassen/Code, Marchelling
+				\item Generieren von Agenten
+				\item Eindeutige Namen und Location von Agenten
+				\item Methoden um mobile Agenten zu finden
+				\item Sicherungsaspekte
+			\end{itemize}
+	\end{itemize}
+	\subsection{Sicherheit}
+	\begin{itemize}		
+		\item Es müssen gesichert werden: Die Host-Maschine \& der mobile Agent. Gemeinsame Bedrohungen sind: \textbf{Masquerade, Tampering und DOS}
+		\item Agent to host (Besonderer Angriff: \textbf{Unauthorized access}) 
+		\item Agent to agent(Besonderer Angriff: \textbf{Repudiation}) 
+		\item Host to agent (Besonderer Angriff: \textbf{Eavesdropping and traffic analysis}) 
+		\item Masquerade: Spoofing (Authentizität)
+		\item Tampering: Veränderungen (Integrität)
+		\item Repudiation: Wenn nicht sichergestellt/geloggt wird, welcher Nutzer welche Aktion gemacht hat. Es können Log-Dateien gefälscht werden, um mit einer fremden Identität Daten zu verändern.
+		\item Sicherheitsmaßnahmen: Authentication, Access control, Vertraulichkeit, Non-repudiation (Nicht-Abstreitbarkeit,...), Auditing
+		\item \textbf{Hostsicherung}: Safe Code Interpretation (interpretierte Sprachen), Authentifizierung, Authorisierung, Ressourcen Allocation, Path-History
+		\item \textbf{Mobile-Agenten-Sicherung}: Safe Environment, Signaturen, shared Secret
 	\end{itemize}
 \end{document}
