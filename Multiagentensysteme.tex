@@ -33,6 +33,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 \tableofcontents
 
 \section{Einführung}
+	Multiagentensysteme bieten eine Alternative zu den schwergewichtigen Expertensystemen und sind in einer Umgebung eingebunden.
 	\subsection{Definition}
 	\begin{itemize}
 		\item Ein Agent ist ein Computer System, welches \textbf{selbstständig} Aktionen im Interesse des Benutzers ausführen kann.
@@ -42,10 +43,16 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 	\end{itemize}
 	\subsection{Eigenschaften}
 	\begin{itemize}
-		\item Jeder Agent hat \textbf{keine vollständigen Informationen} über die Umgebung.
+		\item Ein Agent hat \textbf{keine vollständigen Informationen} über die Umgebung. Er ist begrenzt in Hinblick auf Informationen, Ressourcen, Fähigkeiten $\rightarrow$ er benötigt die Hilfe von anderen.
 		\item Es gibt \textbf{keine globale Kontrolle} der Agenten.
 		\item Die Daten sind \textbf{dezentralisiert}.
 		\item Die Berechnung erfolgt \textbf{asynchron}.
+	\end{itemize}
+	\subsection{Unterscheidung OOP und MAS}
+	\begin{itemize}
+		\item Objekte sind passiv (keine Kontrolle darüber den Methodenaufruf), für den Gemeinnutzen entwickelt und üblicherweise in einen Singlethread integriert
+		\item Agenten sind autonom (und bspw. proaktiv), können unterschiedliche Ziele verfolgen (je nach Organisationsform) und haben ihren eigenen Thread
+		\item[$\rightarrow$] Objects do it for free, agents do it for money
 	\end{itemize}
 	\subsection{Gründe für den Einsatz von MAS}
 	\begin{itemize}
@@ -409,6 +416,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item in Beziehungen zu einander stehen (Organisation)
 		\end{itemize}
 		\item Egoistische Agenten bergen Potential für Konflikte da, jeder seine Ziele verfolgen möchte
+		\item Bei Überlappungen der Umgebungen, können Agenten interagieren: direkt oder indirekt (Bspw. wie Ameisen mittels Endorphinen)
 		\item Lösung: Kooperation mittels Entscheidungstheorie
 	\end{itemize}
 	\subsection{Entscheidungstheorie - Spieltheorie}
@@ -472,6 +480,7 @@ Macht euch eigene Notizen oder ergänzt/korrigiert meine Ausführungen!
 			\item Nash-Equilibirum gdw. jeder gesteht
 			\item Besser wäre aber wenn jeder schweigt
 		\end{itemize}
+ 		\item Beispiel: Tragedy of the commons - Ein Artikel der das Problem beschreibt, dass keiner verantwortlich ist. Die negativen Konsequenzen für alle sind verzögert, die positiven Effekte wirken für den einzelnen jedoch sofort.
 		\item Grundlegendes Problem von Multi-Agenten Interaktionen: Es wird keine Kooperation entstehen, wenn jeder Agent egoistisch ist
 		\item Lösung: Annahme mein Gegenspieler ist meine Zwilling, oder Shadow of the Future (nochmaliges treffen in der Zukunft)
 		\item Iterated Prison Dilemma
@@ -592,7 +601,7 @@ Folgende \textbf{Grundidee:}
 	\subsection{Speech Acts}
 	\begin{itemize}
 		\item Behandlung der Kommunikation bei Multi-Agenten-Systemen ist häufig an die Speech-Act-Theory angelegt
-		\item Alles wird geäußert, um ein Ziel oder eine Intention zu erfüllen
+		\item Alles wird geäußert, um ein Ziel oder eine Intention zu erfüllen. Da der Effekt der Kommunikation in einem anderen Agenten stattfindet, hat der eigentliche Agent keinen direkten Einfluss.
 		\item Speech Act Theorie: Wie Äußerungen genutzt werden, um Ziele zu erreichen
 		\item Verschiedene Typen von Speech Acts (Searle):
 		\begin{description}
